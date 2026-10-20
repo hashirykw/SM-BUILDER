@@ -1,0 +1,109 @@
+@page: projects
+@title: Projects · S. M. Builders & Developers, Karachi
+@desc: Burj Al Jinnah serviced apartments on Main Jinnah Avenue, S. M. House commercial at Main 5 Star and S. M. Axis apartments on Sher Shah Suri Road, North Nazimabad. Compare all three.
+===CSS===
+.phero .stage { --word-top: 24%; }
+.prow { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 0; overflow: hidden; padding: 0; border-radius: var(--r-xl); transition: opacity var(--dur-3), transform var(--dur-3) var(--ease-out); }
+.prow + .prow { margin-top: clamp(20px, 3vw, 36px); }
+.prow:nth-child(even) { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+.prow:nth-child(even) .pimg { order: 2; }
+.prow.out { display: none; }
+.pimg { position: relative; min-height: clamp(320px, 38vw, 540px); display: block; overflow: hidden; }
+.pimg .ph { position: absolute; inset: 0; }
+.pimg .ph img { transition: opacity var(--dur-3), transform 1.6s var(--ease-out); }
+.pimg:hover .ph img { transform: scale(1.04); }
+.pimg .no { position: absolute; z-index: 2; left: 22px; top: 18px; font: 800 clamp(60px, 8vw, 120px)/1 var(--font-display); font-stretch: 120%; letter-spacing: -.05em; color: oklch(100% 0 0 / .9); text-shadow: 0 10px 40px oklch(0% 0 0 / .5); }
+.pimg .cnt { position: absolute; z-index: 2; right: 16px; bottom: 16px; padding: 8px 12px; border-radius: 12px; font: 500 11px/1 var(--font-mono); letter-spacing: .08em; color: #fff; background: oklch(15% .02 158 / .5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.ptx { padding: clamp(24px, 3.4vw, 48px); display: flex; flex-direction: column; gap: var(--space-md); }
+.ptx .h2 { font-size: clamp(32px, 3.6vw, 54px); }
+.ptx .tg { font: 400 italic clamp(19px, 1.6vw, 24px)/1.25 var(--font-serif); color: var(--acc-text); }
+.ptx p { color: var(--ink-2); }
+.ptx ul { list-style: none; display: grid; gap: 0; margin-top: var(--space-sm); border-top: 1px solid var(--stroke); }
+.ptx li { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--stroke); font-size: 14.5px; }
+.ptx li span { color: var(--ink-3); }
+.ptx li b { font-weight: 600; text-align: right; }
+.ptx .acts { margin-top: auto; padding-top: var(--space-md); }
+@media (max-width: 900px) { .prow, .prow:nth-child(even) { grid-template-columns: minmax(0, 1fr); } .prow:nth-child(even) .pimg { order: 0; } .pimg { min-height: 280px; } }
+.fbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: clamp(24px, 3vw, 40px); }
+.fbar .muted { font-size: 14px; }
+/* compare table */
+.cmpw { padding: 8px; border-radius: var(--r-xl); overflow: hidden; }
+.cmp { width: 100%; border-collapse: collapse; min-width: 720px; }
+.cmpx { overflow-x: auto; border-radius: calc(var(--r-xl) - 8px); }
+.cmp th, .cmp td { padding: 16px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--stroke); font-size: 14.5px; }
+.cmp thead th { font: 700 18px/1.2 var(--font-display); font-stretch: 108%; background: var(--glass); }
+.cmp thead th small { display: block; margin-top: 6px; font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc-text); }
+.cmp tbody th { font-weight: 500; color: var(--ink-3); width: 18%; font-size: 13.5px; }
+.cmp tr:last-child td, .cmp tr:last-child th { border-bottom: 0; }
+.cmp td a { color: var(--acc-text); font-weight: 600; }
+===HTML===
+<section class="phero" data-shape="skyline" data-shape-s="1.1" data-shape-a=".4" data-shape-ma=".2">
+  <div class="stage" id="pstage">
+    <div class="sky"></div><div class="stars"></div>
+    <div class="word" aria-hidden="true"><span>LANDMARKS</span></div>
+    <div class="glow"></div>
+    <div class="tower" id="ptower"></div>
+    <div class="ground"></div>
+  </div>
+  <div class="phero-ui wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><span>Projects</span></nav>
+    <h1 class="h1 split">Three addresses. <span class="accent">Built to last.</span></h1>
+    <p class="lead rv d2">Serviced apartments on Main Jinnah Avenue, a commercial landmark at Main 5 Star and a new residential tower on Sher Shah Suri Road.</p>
+  </div>
+</section>
+
+<section class="sec" data-shape="plan" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".6" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="fbar rv">
+      <div class="chips" id="chips" role="group" aria-label="Filter projects">
+        <button type="button" aria-pressed="true" data-f="all">All</button>
+        <button type="button" aria-pressed="false" data-f="res">Residential</button>
+        <button type="button" aria-pressed="false" data-f="com">Commercial</button>
+        <button type="button" aria-pressed="false" data-f="ready">Ready soon</button>
+        <button type="button" aria-pressed="false" data-f="open">Booking open</button>
+      </div>
+      <span class="muted" id="fcount" aria-live="polite"></span>
+    </div>
+    <div id="rows"></div>
+  </div>
+</section>
+
+<section class="sec tight" id="compare" data-shape="house" data-shape-x=".6" data-shape-y=".2" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Side by side</span><h2 class="h2 split">Compare the <span class="accent">three.</span></h2></div><p class="lead rv d1">Every figure here is published by S. M. Builders &amp; Developers. For current prices on Burj Al Jinnah and S. M. Axis, ask the sales team.</p></div>
+    <div class="cmpw glass rv"><div class="cmpx" data-lenis-prevent><table class="cmp" id="cmp"></table></div></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="logo" data-shape-x="-.55" data-shape-y=".1" data-shape-s=".6" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="stmt gframe rv">
+      <div style="position:relative;z-index:1"><h2 class="h2" style="font-size:clamp(30px,3.6vw,54px)">Not sure which one <span class="accent">fits?</span></h2><p class="lead" style="margin-top:14px">Tell us whether you want a home, an investment or a business address, and we'll suggest the right project and unit.</p></div>
+      <div class="acts"><a class="btn btn-acc" href="contact.html#enquire" data-i="arrow">Talk to sales</a><a class="btn btn-glass" href="floor-plans.html" data-i="plan">Floor plans</a></div>
+    </div>
+  </div>
+</section>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, img, I} = SM, P = D.P;
+  $('#ptower').innerHTML = SM.towerSVG('bp', 't-bp') + SM.towerSVG('real', 't-real') + '<span class="t-scan" aria-hidden="true"></span>' + SM.towerSVG('bp', 't-xray');
+  SM.stage($('#pstage'), { dur: 3400, delay: 350, fit: .92, max: 300 });
+  const tags = p => [p.kind, p.stage === 'ready' ? 'ready' : '', p.stage === 'launch' || p.stage === 'build' ? 'open' : ''].filter(Boolean);
+  $('#rows').innerHTML = P.map(p => `<article class="prow glass rv" data-t="${tags(p).join(' ')}" data-spot>
+    <a class="pimg" href="project.html?p=${p.s}" aria-label="Open ${esc(p.n)}">${img(p.cover, p.n)}<span class="no">${p.no}</span><span class="cnt">${p.pics.length} photos · ${p.plans.length} plans</span></a>
+    <div class="ptx"><span class="pill ${p.stage}">${esc(p.status)}</span><h2 class="h2">${esc(p.n)}</h2><span class="tg">${esc(p.tagline)}</span><p>${esc(p.sum)}</p>
+    <ul><li><span>Location</span><b>${esc(p.area)}</b></li><li><span>Building</span><b>${esc(p.building)}</b></li><li><span>${p.kind === 'com' ? 'Spaces' : 'Homes'}</span><b>${esc(p.units)}</b></li>${p.facts.filter(f => f[0] === 'Payment').map(f => `<li><span>Payment</span><b>${esc(f[1])}</b></li>`).join('')}</ul>
+    <div class="acts"><a class="btn btn-primary" href="project.html?p=${p.s}" data-i="arrow">Explore</a><a class="btn btn-glass" href="floor-plans.html#${p.s}" data-i="plan">Floor plans</a></div></div></article>`).join('');
+  const rows = $$('.prow'), cnt = $('#fcount');
+  const apply = f => { let n = 0; rows.forEach(r => { const on = f === 'all' || r.dataset.t.split(' ').includes(f); r.classList.toggle('out', !on); if (on) { n++; r.classList.add('in'); } }); cnt.textContent = `${n} of ${rows.length} projects`; };
+  $('#chips').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('#chips button').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(b.dataset.f); });
+  apply('all');
+  const ROWS = [
+    ['Type', p => p.kindLabel], ['Location', p => p.loc], ['Building', p => p.building], [p => 'Units', p => p.units],
+    ['Sizes', p => p.s === 'burj-al-jinnah' ? '1,765 to 2,691 sq ft gross' : p.s === 'sm-axis' ? '1,072 to 1,597 sq ft net' : 'Halls, showrooms, clinics & restaurants'],
+    ['Payment', p => p.pay.type === 'plan' ? `${p.pay.down}% down, ${p.pay.months} monthly` : p.pay.type === 'rates' ? `${p.pay.down}% down, ${p.pay.inst}% in ${p.pay.months} months, ${p.pay.poss}% on possession` : 'Ask sales'],
+    ['Price', p => p.pay.type === 'rates' ? 'From Rs 38,000 per sq ft (gross)' : 'On request'],
+    ['Status', p => p.status], ['Highlights', p => p.a.slice(0, 4).join(', ')]
+  ];
+  $('#cmp').innerHTML = `<thead><tr><th scope="col"><span class="sr">Detail</span></th>${P.map(p => `<th scope="col">${esc(p.n)}<small>${esc(p.area)}</small></th>`).join('')}</tr></thead><tbody>${ROWS.map(r => `<tr><th scope="row">${typeof r[0] === 'function' ? 'Units' : r[0]}</th>${P.map(p => `<td>${esc(r[1](p))}</td>`).join('')}</tr>`).join('')}<tr><th scope="row"></th>${P.map(p => `<td><a href="project.html?p=${p.s}">Open ${esc(p.n)} →</a></td>`).join('')}</tr></tbody>`;
+});

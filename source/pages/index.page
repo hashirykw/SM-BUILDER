@@ -1,0 +1,461 @@
+@page: index
+@title: S. M. Builders & Developers · Renowned for its integrity since 1967, Karachi
+@desc: S. M. Builders & Developers, part of S. M. Group since 1967: Burj Al Jinnah serviced apartments on Main Jinnah Avenue, S. M. House and S. M. Axis in North Nazimabad, Karachi.
+===CSS===
+/* ---------- intro: the page shows through "1967", then the camera dives through the 1 ---------- */
+body[data-page="index"] .loader { display: none; }
+.intro-bg { position: fixed; inset: 0; z-index: 209; background: linear-gradient(180deg, oklch(30% .06 80 / .15), oklch(20% .05 150 / .35)), url("images/ui/burj-dusk.jpg") center 40% / cover no-repeat, #0b1510; filter: saturate(1.15) brightness(1.15); transform: scale(1.15); }
+.intro { position: fixed; inset: 0; z-index: 210; display: grid; place-items: center; align-content: center; gap: 1.6vw; background: #000; color: #fff; mix-blend-mode: multiply; will-change: transform; }
+.intro .w { display: flex; overflow: hidden; padding: 0 .02em; font: 900 clamp(120px, 31vw, 520px)/.8 var(--font-display); font-stretch: 125%; letter-spacing: -.04em; }
+.intro .w span { display: inline-block; transform: translateY(112%); }
+.intro .s { font: 500 clamp(10px, 1.1vw, 14px)/1 var(--font-mono); letter-spacing: .4em; text-transform: uppercase; text-align: center; opacity: 0; }
+.intro-meta { position: fixed; z-index: 211; bottom: calc(6vh + env(safe-area-inset-bottom, 0px)); pointer-events: none; color: var(--acc-text); }
+.intro-meta.l { left: var(--gut); font: 800 clamp(30px, 4.5vw, 60px)/1 var(--font-display); font-stretch: 112%; font-variant-numeric: tabular-nums; }
+.intro-meta.r { right: var(--gut); font: 500 11px/1.5 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; text-align: right; color: var(--ink-3); }
+.intro-meta .ic { width: 64px; aspect-ratio: 340 / 184; margin-left: auto; margin-bottom: 10px; background: var(--logo-icon) center / contain no-repeat; filter: var(--logo-filter); }
+body.intro-on .nav, body.intro-on .chat-btn { opacity: 0; }
+.nav, .chat-btn { transition: opacity .8s var(--ease-out), transform var(--dur-3) var(--ease-out); }
+@media (max-width: 600px) { .intro .w { font-size: 34vw; } .intro .s { letter-spacing: .2em; font-size: 9.5px; } }
+
+/* ---------- hero ---------- */
+.hero { position: relative; min-height: max(100svh, 740px); }
+.hero-stage { position: absolute; inset: 0; --word-top: 14%; --th: 86%; --ta: .3333; --tx: 54%; }
+.hero-ui { position: relative; z-index: 6; min-height: max(100svh, 740px); display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr) minmax(0, 340px); align-items: end; gap: var(--space-xl); padding-top: calc(var(--nav-h) + 40px); padding-bottom: clamp(28px, 4vw, 52px); pointer-events: none; }
+.hero-ui > * { pointer-events: auto; }
+.hero-copy .kicker { color: var(--acc-text); }
+.hero-copy .h1 { font-size: clamp(38px, 4.3vw, 68px); }
+.hero-copy .lead { margin-top: var(--space-lg); font-size: 16.5px; }
+.onscreen { grid-column: 3; padding: 22px; border-radius: var(--r-lg); }
+.onscreen ol { list-style: none; display: grid; gap: 4px; }
+.onscreen li { position: relative; padding: 11px 14px 13px; border-radius: 14px; transition: background-color var(--dur-3) var(--ease-out), opacity var(--dur-3); opacity: .55; }
+.onscreen li.on { background: var(--glass-2); opacity: 1; }
+.onscreen li b { display: flex; justify-content: space-between; gap: 10px; font: 700 15px/1.2 var(--font-display); font-stretch: 110%; }
+.onscreen li b small { font: 500 11px/1.4 var(--font-mono); color: var(--acc-text); white-space: nowrap; }
+.onscreen li span { display: block; margin-top: 4px; font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.onscreen li .pb { display: block; margin-top: 9px; height: 2px; border-radius: 2px; background: var(--stroke); overflow: hidden; }
+.onscreen li .pb i { display: block; height: 100%; background: linear-gradient(90deg, var(--acc-lo), var(--acc-hi)); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.feat { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); margin-top: 12px; padding: 14px; border-radius: 16px; border: 1px solid var(--stroke); transition: border-color var(--dur-2), background-color var(--dur-2); }
+.feat:hover { border-color: var(--stroke-3); background: var(--glass); }
+.feat small { display: block; font-size: 12px; color: var(--ink-3); }
+.feat b { display: block; font: 600 15px/1.25 var(--font-body); }
+.feat svg { width: 18px; height: 18px; flex: none; transition: transform var(--dur-3) var(--ease-out); }
+.feat:hover svg { transform: translateX(4px); }
+.cap-render { position: absolute; z-index: 5; left: 54%; bottom: 14px; transform: translateX(-50%); font: 500 11px/1 var(--font-mono); letter-spacing: .08em; color: var(--ink-3); white-space: nowrap; }
+.scroll-cue { position: absolute; z-index: 6; left: 50%; bottom: 18px; width: 22px; height: 36px; margin-left: -11px; border-radius: 12px; border: 1.5px solid var(--stroke-3); display: none; }
+.scroll-cue::after { content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--acc); animation: cue 1.8s var(--ease-in-out) infinite; }
+@keyframes cue { 60% { transform: translateY(10px); opacity: 0; } 61% { transform: none; opacity: 0; } }
+@media (max-width: 1180px) { .hero-ui { grid-template-columns: minmax(0, 430px) minmax(0, 1fr) minmax(0, 310px); } .hero-stage { --tx: 56%; --th: 78%; } }
+@media (max-width: 1020px) {
+  .hero { min-height: 0; }
+  .hero-stage { position: relative; height: min(76svh, 640px); --th: 86%; --tx: 50%; --word-top: 20%; }
+  .hero-ui { min-height: 0; grid-template-columns: minmax(0, 1fr); padding-top: 0; margin-top: -40px; }
+  .onscreen { grid-column: auto; }
+  .cap-render { bottom: 52px; font-size: 10px; white-space: normal; text-align: center; width: 90%; left: 50%; }
+}
+@media (max-width: 620px) { .cap-render { display: none; } .hero-stage { height: 70svh; } .acts .btn { flex: 1 1 auto; justify-content: space-between; } }
+
+/* ---------- legacy numbers ---------- */
+.legacy { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px; border-radius: var(--r-xl); }
+.legacy > div { padding: clamp(18px, 2.4vw, 30px) clamp(14px, 1.8vw, 24px); border-right: 1px solid var(--stroke); min-width: 0; }
+.legacy > div:last-child { border-right: 0; }
+.legacy b { display: block; font: 800 clamp(34px, 4vw, 58px)/1 var(--font-display); font-stretch: 112%; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.legacy b sup { font-size: .42em; vertical-align: top; color: var(--acc-text); margin-left: 2px; }
+.legacy > div > span { display: block; margin-top: 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.4; }
+.legacy b { white-space: nowrap; }
+@media (max-width: 960px) { .legacy { grid-template-columns: repeat(2, minmax(0, 1fr)); } .legacy > div { border-right: 0; border-bottom: 1px solid var(--stroke); } .legacy > div:nth-child(odd) { border-right: 1px solid var(--stroke); } .legacy > div:last-child { grid-column: 1 / -1; border-bottom: 0; border-right: 0; } }
+
+/* ---------- landmarks (sticky stack) ---------- */
+.mth { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.mth-l { position: sticky; top: 130px; }
+.mth-l .lead { margin-top: var(--space-lg); }
+.stack { display: grid; gap: 28px; }
+.sc { position: sticky; top: calc(120px + var(--i) * 26px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 470px; overflow: hidden; padding: 0; }
+.sc .ph { height: 100%; min-height: 260px; border-radius: 0; }
+.sc .tx { padding: clamp(24px, 3vw, 38px); display: flex; flex-direction: column; gap: var(--space-md); position: relative; z-index: 1; }
+.sc .stp { display: flex; align-items: center; gap: 10px; font: 500 12px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--acc-text); }
+.sc .stp::after { content: ""; flex: 1; height: 1px; background: var(--stroke-2); }
+.sc p { color: var(--ink-2); font-size: 15px; }
+.sc dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 16px; margin-top: auto; padding-top: var(--space-md); border-top: 1px solid var(--stroke); }
+.sc dl div { padding: 9px 0; border-bottom: 1px solid var(--stroke); }
+.sc dt { font-size: 12px; color: var(--ink-3); }
+.sc dd { font-weight: 600; font-size: 14px; }
+@media (max-width: 1020px) { .mth { grid-template-columns: minmax(0, 1fr); } .mth-l { position: static; } }
+@media (max-width: 760px) { .stack { --mcol: 88%; } .sc { position: relative; top: auto; grid-template-columns: minmax(0, 1fr); min-height: 0; } .sc .ph { height: 210px; } }
+
+/* ---------- rise: S. M. Axis built floor by floor ---------- */
+.rise { position: relative; height: 330vh; }
+.rise-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.rise .stage { position: absolute; inset: 0; --word-top: 30%; --th: 84%; --ta: .3333; --tx: 50%; --tb: 2%; }
+.rise .stage .word span { font-variant-numeric: tabular-nums; --word-a: oklch(100% 0 0 / .45); --word-b: oklch(100% 0 0 / 0); }
+:root[data-theme="light"] .rise .stage .word span { --word-a: oklch(26% .06 156 / .4); --word-b: oklch(26% .06 156 / 0); }
+.rise-ui { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.rise-ui > * { pointer-events: auto; }
+.rise-head { position: absolute; left: var(--gut); top: calc(var(--nav-h) + 44px); max-width: 400px; }
+.rise-head .lead { margin-top: var(--space-md); font-size: 16px; }
+.rise-meter { position: absolute; right: var(--gut); top: calc(var(--nav-h) + 44px); width: 220px; padding: 18px; }
+.rise-meter small { display: block; font-size: 12.5px; color: var(--ink-3); }
+.rise-meter b { display: block; margin-top: 6px; font: 800 44px/1 var(--font-display); font-stretch: 112%; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.rise-meter b span { font-size: 18px; color: var(--ink-3); font-weight: 600; }
+.rise-meter .track { margin-top: 14px; height: 3px; border-radius: 3px; background: var(--stroke); overflow: hidden; }
+.rise-meter .track i { display: block; height: 100%; background: linear-gradient(90deg, var(--acc-lo), var(--acc-hi)); transform-origin: 0 50%; transform: scaleX(var(--b, 0)); }
+.callout { position: absolute; z-index: 6; display: flex; align-items: center; opacity: 0; transform: translateY(14px); transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out); }
+.callout.on { opacity: 1; transform: translateY(-50%); }
+.callout .ln { width: clamp(30px, 5vw, 80px); height: 1px; background: linear-gradient(90deg, var(--acc-hi), var(--stroke-3)); }
+.callout .dt { width: 9px; height: 9px; border-radius: 50%; background: var(--acc-hi); box-shadow: 0 0 0 4px var(--acc-soft); flex: none; }
+.callout .gc { padding: 12px 16px; border-radius: 14px; max-width: 250px; font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+.callout .gc b { display: block; font: 600 14.5px/1.3 var(--font-body); color: var(--ink); }
+.callout.l { right: calc(50% + var(--tw, 140px)); }
+.callout.r { left: calc(50% + var(--tw, 140px)); flex-direction: row-reverse; }
+.callout.r .ln { background: linear-gradient(270deg, var(--acc-hi), var(--stroke-3)); }
+.rise-cap { display: none; }
+.rise-end { position: absolute; left: 50%; bottom: 34px; transform: translate(-50%, 16px); opacity: 0; transition: opacity var(--dur-3), transform var(--dur-3) var(--ease-out); }
+.rise-end.on { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 860px) {
+  .rise { height: 270vh; }
+  .rise .stage { --th: 64%; --tb: 4%; --word-top: 32%; }
+  .rise-head { right: var(--gut); max-width: none; } .rise-head .lead { display: none; }
+  .rise-meter { top: calc(var(--nav-h) + 96px); right: auto; left: var(--gut); width: auto; padding: 10px 14px; display: flex; align-items: baseline; gap: 10px; }
+  .rise-meter b { font-size: 26px; margin: 0; } .rise-meter .track { display: none; }
+  .callout { display: none; }
+  .rise-cap { display: block; position: absolute; left: var(--gut); right: var(--gut); bottom: 92px; padding: 12px 16px; border-radius: 16px; font-size: 13.5px; color: var(--ink-2); opacity: 0; transition: opacity var(--dur-3); }
+  .rise-cap.on { opacity: 1; } .rise-cap b { display: block; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .rise-end { bottom: 24px; left: var(--gut); transform: translateY(16px); } .rise-end.on { transform: none; }
+}
+
+/* ---------- minutes from everything (time rings) ---------- */
+.near { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.rings { position: relative; aspect-ratio: 1; max-width: 560px; width: 100%; justify-self: center; }
+.rings svg { width: 100%; height: 100%; overflow: visible; }
+.rings .rg { fill: none; stroke: var(--stroke-2); stroke-dasharray: 2 5; }
+.rings .rl { font: 500 10px var(--font-mono); fill: var(--ink-3); letter-spacing: .08em; }
+.rings .sweep { transform-origin: 300px 300px; animation: sweep 9s linear infinite; }
+@keyframes sweep { to { transform: rotate(360deg); } }
+.rings .core { fill: var(--acc); }
+.rings .dot { cursor: pointer; }
+.rings .dot circle.d { fill: var(--bg); stroke: var(--acc); stroke-width: 2; transition: r var(--dur-2) var(--ease-out), fill var(--dur-2); }
+.rings .dot text { font: 600 12px var(--font-body); fill: var(--ink-2); transition: fill var(--dur-2); }
+.rings .dot.on circle.d { fill: var(--acc); r: 8; }
+.rings .dot.on text { fill: var(--ink); }
+.rings .spoke { stroke: var(--acc); stroke-width: 1; opacity: 0; transition: opacity var(--dur-2); }
+.rings .dot.on .spoke { opacity: .7; }
+.nlist { list-style: none; display: grid; }
+.nlist li { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 13px 4px; border-bottom: 1px solid var(--stroke); cursor: default; transition: padding var(--dur-3) var(--ease-out), color var(--dur-2); }
+.nlist li b { font: 600 16px/1.3 var(--font-body); }
+.nlist li span { font: 500 13px/1 var(--font-mono); color: var(--acc-text); white-space: nowrap; }
+.nlist li.on { padding-left: 14px; }
+@media (max-width: 900px) { .near { grid-template-columns: minmax(0, 1fr); } .rings .dot text { display: none; } }
+
+/* ---------- ring gallery ---------- */
+.ring-sec { overflow: hidden; }
+.ring-stage { position: relative; height: clamp(380px, 44vw, 540px); perspective: 1700px; perspective-origin: 50% 40%; touch-action: pan-y; cursor: grab; user-select: none; }
+.ring-stage.drag { cursor: grabbing; }
+.ring { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; transform: translateZ(calc(var(--R) * -1)) rotateX(-6deg) rotateY(var(--rot, 0deg)); }
+.ri { position: absolute; width: var(--w); height: calc(var(--w) * 1.25); left: calc(var(--w) / -2); top: calc(var(--w) * -.625); border-radius: 18px; padding: 5px; transform: rotateY(var(--a)) translateZ(var(--R)); transition: opacity var(--dur-2), filter var(--dur-2); background: linear-gradient(155deg, var(--glass-3), var(--glass)); border: 1px solid var(--stroke-2); box-shadow: var(--shadow-s); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.ri .ph { width: 100%; height: 100%; border-radius: 13px; }
+.ri:hover { filter: brightness(1.08); }
+.ring-floor { position: absolute; left: 10%; right: 10%; bottom: 4%; height: 26%; background: radial-gradient(50% 50% at 50% 50%, var(--acc-soft), transparent 70%); filter: blur(20px); pointer-events: none; }
+.ring-cap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--space-md) var(--space-lg); margin-top: var(--space-lg); }
+.ring-cap .now { min-width: 0; text-align: center; min-width: 180px; }
+.ring-cap .now b { display: block; font: 700 18px/1.2 var(--font-display); font-stretch: 110%; }
+.ring-cap .now small { color: var(--ink-3); font-size: 13px; }
+
+/* ---------- built with + affiliations ---------- */
+.aff { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 1100px) { .aff { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .aff { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- news rail ---------- */
+#newsRail { --col: clamp(250px, 23vw, 310px); }
+
+/* ---------- enquiry ---------- */
+.enq { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); overflow: hidden; padding: 0; border-radius: var(--r-xl); }
+.enq-l { position: relative; padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: var(--space-lg); overflow: hidden; }
+.enq-l::after { inset: 12px; }
+.enq-l .lines { display: grid; gap: 2px; margin-top: auto; position: relative; z-index: 1; }
+.enq-l .lines a { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); padding: 13px 0; border-bottom: 1px solid oklch(80% .1 82 / .22); font-weight: 500; transition: color var(--dur-2); }
+.enq-l .lines a span { color: oklch(95% .02 90 / .6); font-weight: 400; font-size: 14px; }
+.enq-l .lines a:hover { color: oklch(84% .1 84); }
+.enq-l .bgl { position: absolute; right: -8%; bottom: -10%; width: 70%; aspect-ratio: 340 / 184; background: var(--logo-icon) center / contain no-repeat; opacity: .1; pointer-events: none; }
+.enq-r { padding: clamp(28px, 4vw, 56px); display: grid; gap: var(--space-lg); align-content: start; }
+@media (max-width: 900px) { .enq { grid-template-columns: minmax(0, 1fr); } }
+===HTML===
+<div class="intro-bg" id="introBg" aria-hidden="true" hidden></div>
+<div class="intro" id="intro" aria-hidden="true" hidden><div class="w">1967</div><div class="s">S. M. Group · Renowned for its integrity</div></div>
+<div class="intro-meta l" id="introL" aria-hidden="true" hidden>000</div>
+<div class="intro-meta r" id="introR" aria-hidden="true" hidden><div class="ic"></div>S. M. Builders<br>&amp; Developers</div>
+
+<section class="hero" data-shape="cloud" data-shape-s="1.3" data-shape-a=".45" data-shape-ma=".3" data-shape-spin=".03" aria-labelledby="heroTitle">
+  <div class="stage hero-stage" id="heroStage">
+    <div class="sky"></div><div class="stars"></div>
+    <div class="word" aria-hidden="true"><span>INTEGRITY</span></div>
+    <div class="glow"></div>
+    <div class="tower" id="heroTower" role="img" aria-label="S. M. Axis, Ground plus 22 floors, drawn from the architect's render"></div>
+    <div class="ground"></div>
+    <span class="cap-render">S. M. Axis · Ground + 22 · drawn from the architect's render · hover the tower to see its blueprint</span>
+  </div>
+  <div class="hero-ui wrap">
+    <div class="hero-copy">
+      <span class="kicker rv">S. M. Group · Since 1967</span>
+      <h1 class="h1 split" id="heroTitle">Building Karachi's landmarks <span class="accent">with integrity.</span></h1>
+      <p class="lead rv d2">From Burj Al Jinnah on Main Jinnah Avenue to S. M. House and S. M. Axis in North Nazimabad, S. M. Builders &amp; Developers builds homes and business addresses that keep their word.</p>
+      <div class="acts rv d3">
+        <a class="btn btn-primary" href="projects.html" data-i="arrow">Explore projects</a>
+        <a class="btn btn-glass" href="contact.html#enquire" data-i="arrow">Book a site visit</a>
+      </div>
+    </div>
+    <aside class="onscreen glass rv d3" aria-label="S. M. Axis, level by level" data-spot>
+      <span class="kicker">Rising on screen · S. M. Axis</span>
+      <ol id="osList">
+        <li><b>Ground <small>G</small></b><span>Showrooms and a reception lobby on Sher Shah Suri Road.</span><span class="pb"><i></i></span></li>
+        <li><b>Parking <small>01–05</small></b><span>Five parking floors with RFID smart access.</span><span class="pb"><i></i></span></li>
+        <li><b>Residences <small>06–22</small></b><span>83 three-bed homes with panoramic windows.</span><span class="pb"><i></i></span></li>
+        <li><b>Roof <small>R</small></b><span>Walking track and an open-to-sky deck.</span><span class="pb"><i></i></span></li>
+      </ol>
+      <a class="feat" href="project.html?p=sm-axis"><span><small>Booking open</small><b>S. M. Axis · North Nazimabad</b></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="logo" data-shape-x=".58" data-shape-y=".05" data-shape-s=".6" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap">
+    <div class="legacy glass rv" data-spot>
+      <div><b>1967</b><span>The year S. M. Group began its journey</span></div>
+      <div><b><span class="count" id="yrs" data-to="59">0</span><sup>yrs</sup></b><span>Of building trust in Karachi</span></div>
+      <div><b><span class="count" data-to="3">0</span></b><span>Landmarks: Burj Al Jinnah, S. M. House, S. M. Axis</span></div>
+      <div><b>G+<span class="count" data-to="22">0</span></b><span>Floors at S. M. Axis, our newest tower</span></div>
+      <div><b><span class="count" data-to="100">0</span><sup>%</sup></b><span>Electricity load backup at Burj Al Jinnah</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="landmarks" data-shape="plan" data-shape-x="-.62" data-shape-y=".1" data-shape-s=".6" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap mth">
+    <div class="mth-l">
+      <span class="kicker">Our projects</span>
+      <h2 class="h2 split">Three landmarks. <span class="accent">One promise.</span></h2>
+      <p class="lead rv d1">A serviced-apartment tower that's nearly ready to move in, a commercial address at Main 5 Star, and a new residential tower now open for booking.</p>
+      <div class="acts rv d2"><a class="btn btn-glass" href="projects.html" data-i="arrow">Compare all three</a></div>
+    </div>
+    <div class="stack mrail" id="stack" style="--cols:1"></div>
+  </div>
+</section>
+
+<section class="rise" id="rise" data-shape="tower" data-shape-y="-.1" data-shape-s="1.05" data-shape-a=".35" aria-label="S. M. Axis, built floor by floor">
+  <div class="rise-pin">
+    <div class="stage" id="riseStage">
+      <div class="sky"></div><div class="stars"></div>
+      <div class="word" aria-hidden="true"><span id="riseWord">00</span></div>
+      <div class="glow"></div>
+      <div class="tower" id="riseTower"></div>
+      <div class="ground"></div>
+    </div>
+    <div class="rise-ui">
+      <div class="rise-head"><h2 class="h2" style="font-size:clamp(30px,3.6vw,54px)">From blueprint <span class="accent">to skyline.</span></h2><p class="lead">Keep scrolling to raise S. M. Axis, Ground + 22 floors on a 1,055 sq yd corner plot facing the 320 ft Sher Shah Suri Road.</p></div>
+      <div class="rise-meter glass" id="meter"><small>Floor</small><b><span id="storey">G</span> <span>/ 22</span></b><div class="track"><i></i></div></div>
+      <div id="callouts"></div>
+      <div class="rise-cap glass" id="riseCap" aria-live="polite"></div>
+      <a class="btn btn-primary rise-end" id="riseEnd" href="project.html?p=sm-axis" data-i="arrow">Explore S. M. Axis</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-shape="pin" data-shape-x="-.62" data-shape-y=".15" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Burj Al Jinnah · Main Jinnah Avenue</span><h2 class="h2 split">Minutes from <span class="accent">everything.</span></h2></div><p class="lead rv d1">Opposite Brigadier Houses in Malir Cantt and next to PAF Falcon Houses, on a 200 ft road with no other high-rise around it. Drive times as published by S. M. Builders.</p></div>
+    <div class="near">
+      <div class="rings rv" id="rings"></div>
+      <div class="rv d1"><ul class="nlist" id="nlist"></ul><div class="acts"><a class="btn btn-glass btn-sm" href="project.html?p=burj-al-jinnah#map" data-i="map">See it on the map</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ring-sec" data-shape="globe" data-shape-s=".95" data-shape-a=".3" data-shape-ma=".15" data-shape-spin=".08">
+  <div class="wrap">
+    <div class="sec-head center"><div><span class="kicker">Hotel-like living</span><h2 class="h2 split">Inside <span class="accent">Burj Al Jinnah.</span></h2></div><p class="lead rv d1">Renders of the serviced, semi-furnished apartments: drawing rooms, master bedrooms, children's rooms and the air-conditioned reception. Drag the ring to look around.</p></div>
+  </div>
+  <div class="ring-stage rv" id="ringStage" role="region" aria-label="Photo ring. Drag or use the arrow buttons to rotate."><div class="ring" id="ring"></div><div class="ring-floor"></div></div>
+  <div class="wrap ring-cap">
+    <button class="ib" id="rPrev" aria-label="Rotate to previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+    <div class="now" aria-live="polite"><b id="rName">Reception lobby</b><small id="rArea">Burj Al Jinnah</small></div>
+    <button class="ib" id="rNext" aria-label="Rotate to next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <button class="btn btn-glass btn-sm" id="rAll" data-i="expand">Open full gallery</button>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="skyline" data-shape-s="1.1" data-shape-a=".25" data-shape-ma=".1">
+  <div class="wrap"><div class="sec-head"><div><span class="kicker">Top shelf materials</span><h2 class="h2 split">Built with <span class="accent">names you trust.</span></h2></div><p class="lead rv d1">Burj Al Jinnah is fitted with Grohe sanitary, Kohler high-speed A/C elevators, Pakistan Cables wiring, Envicrete blocks, Agha and Amreli steel, ERA pipes and Google Smart Home.</p></div></div>
+  <div class="mq rv" aria-label="Material partners"><div class="mq-row" id="mq"></div></div>
+  <div class="wrap" style="margin-top:clamp(40px,6vw,80px)">
+    <div class="gframe rv" style="padding:clamp(24px,3vw,40px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px;position:relative;z-index:1"><h3 class="h3">Affiliated &amp; enlisted with</h3><p class="muted small" style="max-width:52ch">Approvals and memberships listed by S. M. Builders &amp; Developers.</p></div>
+      <div class="aff" id="aff" style="position:relative;z-index:1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-shape="cloud" data-shape-s="1.1" data-shape-a=".25" data-shape-ma=".1">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">News &amp; updates</span><h2 class="h2 split">On site, <span class="accent">on record.</span></h2></div>
+      <div style="display:grid;gap:22px;justify-items:end" class="rv d1">
+        <p class="lead" style="text-align:right">Construction milestones, partnerships and events, as they happen.</p>
+        <div class="rail-ctl" data-rail-ctl="news"><button class="ib" data-prev aria-label="Previous news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button><span class="rail-bar"><i></i></span><button class="ib" data-next aria-label="Next news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><a class="btn btn-glass btn-sm" href="news.html" data-i="arrow">All news</a></div>
+      </div>
+    </div>
+    <div class="rail" data-rail="news" id="newsRail"></div>
+  </div>
+</section>
+
+<section class="sec" id="enquire" data-shape="logo" data-shape-x=".55" data-shape-y=".1" data-shape-s=".6" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap">
+    <div class="enq glass rv">
+      <div class="enq-l gframe" style="border-radius:0">
+        <h2 class="h2" style="font-size:clamp(32px,3.8vw,56px);position:relative;z-index:1">Visit the site. <span class="accent">See it for yourself.</span></h2>
+        <p class="lead" style="position:relative;z-index:1">Tell us which project interests you and our sales team will call to arrange a visit, share the price list and walk you through the payment plan.</p>
+        <div class="lines">
+          <a href="tel:+923111756111">03-111-756-111 <span>UAN</span></a>
+          <a href="tel:+923153002150">0315-3002150 <span>Sales</span></a>
+          <a href="tel:+923153002144">0315-3002144 <span>Sales</span></a>
+          <a href="mailto:info@smbuilders.com.pk">info@smbuilders.com.pk <span>Email</span></a>
+        </div>
+        <span class="bgl" aria-hidden="true"></span>
+      </div>
+      <form class="enq-r" id="lead" novalidate>
+        <div class="two">
+          <div class="field"><label for="fn">Your name</label><input class="inp" id="fn" name="name" autocomplete="name"><span class="err-msg" aria-live="polite"></span></div>
+          <div class="field"><label for="fp">Phone</label><input class="inp" id="fp" name="phone" inputmode="tel" autocomplete="tel"><span class="err-msg" aria-live="polite"></span></div>
+        </div>
+        <div class="field"><span id="pl" class="flabel">Project</span><div class="seg" role="group" aria-labelledby="pl" data-name="proj"><button type="button" aria-pressed="true">Burj Al Jinnah</button><button type="button" aria-pressed="false">S. M. House</button><button type="button" aria-pressed="false">S. M. Axis</button><button type="button" aria-pressed="false">Not sure yet</button></div></div>
+        <div class="field"><span id="wl" class="flabel">I'm looking to</span><div class="seg" role="group" aria-labelledby="wl" data-name="want"><button type="button" aria-pressed="true">Live there</button><button type="button" aria-pressed="false">Invest</button><button type="button" aria-pressed="false">Run a business</button></div></div>
+        <button class="btn btn-acc btn-block" type="submit" data-i="send">Send on WhatsApp</button>
+        <p class="muted small" style="margin-top:-8px">This opens WhatsApp with your details filled in, ready to send to our sales team.</p>
+        <p class="form-ok" hidden>WhatsApp is open with your enquiry. Press send and we'll call you back.</p>
+      </form>
+    </div>
+  </div>
+</section>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, img, I, clamp} = SM, P = D.P, find = s => P.find(p => p.s === s);
+  $('#yrs').dataset.to = new Date().getFullYear() - 1967;
+
+  /* towers drawn in code */
+  const towerHTML = () => SM.towerSVG('bp', 't-bp') + SM.towerSVG('real', 't-real') + '<span class="t-scan" aria-hidden="true"></span>' + SM.towerSVG('bp', 't-xray');
+  $('#heroTower').innerHTML = towerHTML(); $('#riseTower').innerHTML = towerHTML();
+
+  /* intro: once per visit, the page shows through "1967", then we dive through the 1 */
+  let introMs = 0;
+  const ses = (() => { try { return sessionStorage; } catch (e) { return null; } })();
+  const intro = $('#intro'), iL = $('#introL'), iR = $('#introR'), iB = $('#introBg');
+  if (!SM.RM && !(ses && ses.getItem('sm-intro'))) {
+    introMs = 3500; ses && ses.setItem('sm-intro', 1);
+    intro.hidden = iL.hidden = iR.hidden = iB.hidden = false; iB.animate([{ transform: 'scale(1.15)' }, { transform: 'scale(1.02)' }], { duration: 3600, easing: 'cubic-bezier(.3,0,.2,1)', fill: 'forwards' }); document.body.classList.add('intro-on');
+    const w = $('.w', intro); w.innerHTML = [...w.textContent].map(c => `<span>${c}</span>`).join('');
+    const L = $$('span', w), s = $('.s', intro), E = 'cubic-bezier(.16,1,.3,1)';
+    L.forEach((l, i) => l.animate([{ transform: 'translateY(112%)' }, { transform: 'none' }], { duration: 1100, delay: 100 + i * 70, easing: E, fill: 'forwards' }));
+    s.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 700, easing: E, fill: 'forwards' });
+    const t0 = performance.now(); const cnt = t => { const p = Math.min(1, (t - t0) / 2300); iL.textContent = String(Math.round(100 * (1 - Math.pow(1 - p, 2)))).padStart(3, '0'); if (p < 1) requestAnimationFrame(cnt); }; requestAnimationFrame(cnt);
+    setTimeout(() => {
+      const r = L[0].getBoundingClientRect();
+      intro.style.transformOrigin = `${r.left + r.width * .62}px ${r.top + r.height * .55}px`;
+      [iL, iR, s].forEach(el => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
+      iB.animate([{ opacity: 1 }, { opacity: 1, offset: .55 }, { opacity: 0 }], { duration: 1500, easing: 'ease-in', fill: 'forwards' }).onfinish = () => iB.remove();
+      intro.animate([{ transform: 'scale(1)' }, { transform: 'scale(90)' }], { duration: 1300, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' }).onfinish = () => { intro.remove(); iL.remove(); iR.remove(); };
+      setTimeout(() => document.body.classList.remove('intro-on'), 1000);
+    }, 2400);
+  } else { intro.remove(); iL.remove(); iR.remove(); iB.remove(); }
+
+  /* hero: tower builds, the on-screen card follows the levels */
+  const li = $$('#osList li'), cuts = [0, SM.levelAt(1), SM.levelAt(6), SM.levelAt(22) + .04, 1];
+  SM.stage($('#heroStage'), { dur: 4200, delay: introMs ? introMs - 300 : 600, fit: .92, max: 330, onProgress: p => {
+    const b = clamp((p - .3) / .7, 0, 1);
+    li.forEach((l, i) => { const v = clamp((b - cuts[i]) / Math.max(.01, cuts[i + 1] - cuts[i]), 0, 1); $('.pb i', l).style.setProperty('--p', v); l.classList.toggle('on', b >= cuts[i] && (b < cuts[i + 1] || i === li.length - 1) || (p >= 1 && i === li.length - 1)); });
+  }});
+
+  /* landmarks stack */
+  $('#stack').innerHTML = P.map((p, i) => `<article class="sc glass" style="--i:${i}" data-spot>${img(p.cover, p.n)}<div class="tx"><span class="stp">${p.no} · ${esc(p.area)}</span><h3 class="h3">${esc(p.n)}</h3><span class="pill ${p.stage}">${esc(p.statusShort)}</span><p>${esc(p.sum)}</p><dl>${p.facts.map(f => `<div><dt>${f[0]}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl><a class="tlink" href="project.html?p=${p.s}">Explore ${esc(p.n)} ${I.arrow}</a></div></article>`).join('');
+
+  /* rise: S. M. Axis, floor by floor */
+  const CO = [
+    { n: 0, s: 'l', b: 'Showrooms & reception lobby', t: 'At street level on the 320 ft road' },
+    { n: 3, s: 'r', b: '5 floors of dedicated parking', t: 'RFID smart access on every level' },
+    { n: 5, s: 'l', b: 'Your own 8 × 16 ft slot', t: 'Reserved with every apartment' },
+    { n: 8, s: 'r', b: 'Apartments begin', t: '3-bed drawing/lounge & 3-bed lounge' },
+    { n: 14, s: 'l', b: 'Large panoramic windows', t: 'Serene views and lasting value' },
+    { n: 19, s: 'r', b: '83 residences in five layouts', t: '1,072 to 1,597 sq ft net' },
+    { n: 22, s: 'l', b: 'Rooftop walking track', t: 'And an open-to-sky sitting deck' }
+  ];
+  const rst = $('#riseStage');
+  $('#callouts').innerHTML = CO.map(c => `<div class="callout ${c.s}"><span class="gc glass"><b>${c.b}</b>${c.t}</span><span class="ln"></span><span class="dt"></span></div>`).join('');
+  const cos = $$('#callouts .callout');
+  const placeCallouts = () => { const tw = $('.tower', rst).getBoundingClientRect(), sr = rst.getBoundingClientRect(); rst.parentNode.style.setProperty('--tw', (tw.width * .44) + 'px');
+    cos.forEach((c, i) => { const f = SM.levelAt(CO[i].n) + (CO[i].n === 0 ? .025 : CO[i].n < 6 ? .016 : .02); c.style.top = (tw.bottom - sr.top - f * tw.height) + 'px'; }); };
+  addEventListener('resize', placeCallouts); setTimeout(placeCallouts, 60);
+  rst.classList.add('go');
+  const word = $('#riseWord'), storey = $('#storey'), meter = $('#meter'), cap = $('#riseCap');
+  const levelOf = b => { for (let n = 22; n >= 0; n--) if (b >= SM.levelAt(n) + .006) return n; return -1; };
+  let lastS = -2;
+  SM.scrollBuild($('#rise'), (p, b) => {
+    const n = levelOf(b);
+    if (n !== lastS) { lastS = n; const t = n <= 0 ? 'G' : String(n).padStart(2, '0'); storey.textContent = n <= 0 ? 'G' : n; word.textContent = t; }
+    meter.style.setProperty('--b', b);
+    let lastOn = -1; cos.forEach((c, i) => { const on = n >= CO[i].n && b > .01; c.classList.toggle('on', on); if (on) lastOn = i; });
+    if (lastOn >= 0) { if (cap.dataset.k != lastOn) { cap.dataset.k = lastOn; cap.innerHTML = `<b>${CO[lastOn].b}</b>${CO[lastOn].t}`; } cap.classList.toggle('on', b < 1); } else cap.classList.remove('on');
+    $('#riseEnd').classList.toggle('on', b >= 1);
+  });
+  { const span = word; const fit = () => { span.style.fontSize = Math.min(520, innerHeight * .5, innerWidth * .6) + 'px'; }; fit(); addEventListener('resize', fit); }
+  (function () { if (!SM.FINE || SM.RM) return; const tw = $('.tower', rst);
+    rst.parentNode.addEventListener('pointermove', e => { const tr = tw.getBoundingClientRect(); rst.style.setProperty('--lx', (e.clientX - tr.left) + 'px'); rst.style.setProperty('--ly', (e.clientY - tr.top) + 'px'); rst.classList.add('lens-on'); });
+    rst.parentNode.addEventListener('pointerleave', () => rst.classList.remove('lens-on')); })();
+
+  /* minutes from everything: rings sized by drive time */
+  const burj = find('burj-al-jinnah'), NR = burj.near.filter(n => n[1] > 0), C0 = 300, R0 = 46, RK = 19;
+  const ang = i => -Math.PI / 2 + i * (Math.PI * 2 / NR.length) + .3;
+  let svg = `<svg viewBox="0 0 600 600" role="img" aria-label="Drive times from Burj Al Jinnah"><defs><linearGradient id="swg" x1="0" x2="1"><stop offset="0" stop-color="var(--acc)" stop-opacity="0"/><stop offset="1" stop-color="var(--acc)" stop-opacity=".35"/></linearGradient></defs>`;
+  [3, 6, 9, 12].forEach(m => { const r = R0 + m * RK; svg += `<circle class="rg" cx="${C0}" cy="${C0}" r="${r}"/><text class="rl" x="${C0 + 4}" y="${C0 - r - 4}">${m} MIN</text>`; });
+  svg += `<path class="sweep" d="M${C0} ${C0} L${C0 + R0 + 12 * RK} ${C0} A${R0 + 12 * RK} ${R0 + 12 * RK} 0 0 0 ${C0 + (R0 + 12 * RK) * Math.cos(-.5)} ${C0 + (R0 + 12 * RK) * Math.sin(-.5)} Z" fill="url(#swg)"/>`;
+  svg += NR.map((n, i) => { const r = R0 + n[1] * RK, a = ang(i), x = C0 + Math.cos(a) * r, y = C0 + Math.sin(a) * r, right = Math.cos(a) >= 0;
+    return `<g class="dot" data-i="${i}"><line class="spoke" x1="${C0}" y1="${C0}" x2="${x}" y2="${y}"/><circle class="d" cx="${x}" cy="${y}" r="6"/><text x="${x + (right ? 12 : -12)}" y="${y + 4}" text-anchor="${right ? 'start' : 'end'}">${esc(n[0])}</text></g>`; }).join('');
+  svg += `<circle cx="${C0}" cy="${C0}" r="30" fill="var(--acc-soft)"/><circle class="core" cx="${C0}" cy="${C0}" r="12"/><text x="${C0}" y="${C0 + 52}" text-anchor="middle" style="font:700 13px var(--font-display);fill:var(--ink)">BURJ AL JINNAH</text></svg>`;
+  $('#rings').innerHTML = svg;
+  $('#nlist').innerHTML = burj.near.map(n => `<li data-i="${NR.indexOf(n)}"><b>${esc(n[0])}</b><span>${n[1] ? n[1] + ' min' : esc(n[2])}</span></li>`).join('');
+  const hi = i => { $$('#rings .dot').forEach(d => d.classList.toggle('on', +d.dataset.i === i)); $$('#nlist li').forEach(l => l.classList.toggle('on', +l.dataset.i === i && i >= 0)); };
+  $$('#rings .dot, #nlist li').forEach(el => { el.addEventListener('pointerenter', () => hi(+el.dataset.i)); el.addEventListener('click', () => hi(+el.dataset.i)); });
+  $('#rings').addEventListener('pointerleave', () => hi(-1)); $('#nlist').addEventListener('pointerleave', () => hi(-1));
+  let auto = 0; const ai = setInterval(() => { if (document.hidden) return; const r = $('#rings').getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0 && !$('#rings .dot:hover') && !$('#nlist li:hover')) hi(auto++ % NR.length); }, 2200);
+
+  /* ring gallery */
+  const R = burj.pics.slice(3).concat(find('sm-house').pics.slice(2, 8)).map(x => ({ src: x.src, fb: x.fb, cap: x.cap, area: burj.pics.includes(x) ? 'Burj Al Jinnah' : 'S. M. House' }));
+  R.forEach(r => { r.area = burj.pics.some(x => x.src === r.src) ? 'Burj Al Jinnah' : 'S. M. House'; });
+  const ring = $('#ring'), stg = $('#ringStage'), n = R.length, step = 360 / n;
+  ring.innerHTML = R.map((r, i) => `<button class="ri" style="--a:${i * step}deg" data-k="${i}" aria-label="Open photo: ${esc(r.cap)}">${img(r, r.cap).replace('loading="lazy"', 'loading="eager"')}</button>`).join('');
+  const items = $$('.ri', ring);
+  const size = () => { const w = Math.min(230, Math.max(130, stg.clientWidth * .17)); const Rr = Math.round(w * 1.02 / (2 * Math.tan(Math.PI / n))); ring.style.setProperty('--w', w + 'px'); ring.style.setProperty('--R', Rr + 'px'); stg.style.setProperty('--R', Rr + 'px'); };
+  size(); addEventListener('resize', size);
+  let rot = 0, vel = 0, drag = false, x0 = 0, r0 = 0, moved = 0, front = -1, visible = false;
+  const draw = () => { ring.style.setProperty('--rot', rot + 'deg'); let best = 0, bd = 999;
+    items.forEach((it, i) => { let d = ((i * step + rot) % 360 + 540) % 360 - 180; const ad = Math.abs(d); if (ad < bd) { bd = ad; best = i; } it.style.opacity = ad > 100 ? .25 : 1 - ad / 260; });
+    if (best !== front) { front = best; $('#rName').textContent = R[best].cap; $('#rArea').textContent = R[best].area; } };
+  const loop = () => { if (visible || drag || Math.abs(vel) > .01) { if (!drag) { if (Math.abs(vel) > .01) { rot += vel; vel *= .94; } else if (!SM.RM) rot -= .06; } draw(); } requestAnimationFrame(loop); };
+  new IntersectionObserver(es => es.forEach(e => visible = e.isIntersecting), { threshold: .05 }).observe(stg);
+  stg.addEventListener('pointerdown', e => { drag = true; moved = 0; x0 = e.clientX; r0 = rot; vel = 0; stg.classList.add('drag'); stg.setPointerCapture(e.pointerId); });
+  stg.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - x0; if (Math.abs(dx) > 5) moved = 1; const nr = r0 + dx * .25; vel = nr - rot; rot = nr; });
+  stg.addEventListener('pointercancel', () => { drag = false; stg.classList.remove('drag'); });
+  stg.addEventListener('pointerup', e => { drag = false; stg.classList.remove('drag'); if (!moved) { const it = document.elementsFromPoint(e.clientX, e.clientY).find(el => el.classList && el.classList.contains('ri')); if (it) SM.lightbox(R, +it.dataset.k); } });
+  const snap = d => { const target = -((front + d) * step); const diff = ((target - rot) % 360 + 540) % 360 - 180; vel = diff * .08; };
+  $('#rPrev').onclick = () => snap(-1); $('#rNext').onclick = () => snap(1);
+  $('#rAll').onclick = () => SM.lightbox(R, front < 0 ? 0 : front);
+  ring.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.classList.contains('ri')) SM.lightbox(R, +e.target.dataset.k); });
+  draw(); loop();
+
+  /* built with + affiliations */
+  const mq = D.BUILT.map(b => `<span>${esc(b)}</span>`).join(''); $('#mq').innerHTML = mq + mq;
+  $('#aff').innerHTML = D.AFF.map(a => `<div class="ltile" title="${esc(a.full)}"><span class="lim">${SM.rawImg(a, a.full)}</span><span><b>${esc(a.n)}</b><small>${esc(a.full)}</small></span></div>`).join('');
+
+  /* news rail */
+  $('#newsRail').innerHTML = D.N.slice(0, 8).map((n, i) => `<a class="nc" href="news.html#${n.id}" data-spot>${img(n.img, n.t)}<span class="nx"><span class="nm"><em>${esc(n.cat)}</em><span>${esc(n.when)}</span></span><b>${esc(n.t)}</b></span></a>`).join('');
+
+  /* enquiry */
+  $$('.seg').forEach(g => g.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('button', g).forEach(x => x.setAttribute('aria-pressed', x === b)); }));
+  SM.leadForm($('#lead'), f => ['Project: ' + $('[data-name=proj] [aria-pressed=true]', f).textContent, 'Looking to: ' + $('[data-name=want] [aria-pressed=true]', f).textContent, 'I would like to book a site visit.']);
+});

@@ -1,0 +1,83 @@
+@page: plans
+@out: floor-plans
+@title: Floor plans · S. M. Builders & Developers, Karachi
+@desc: Every published floor plan for Burj Al Jinnah, S. M. House and S. M. Axis, with zoomable drawings and unit sizes.
+===CSS===
+.fp-top { padding-top: calc(14px + var(--nav-h) + clamp(32px, 5vw, 70px)); }
+.fp-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-xl); align-items: end; margin-bottom: clamp(24px, 3vw, 40px); }
+.fp-head .h1 { font-size: clamp(40px, 5vw, 80px); }
+@media (max-width: 860px) { .fp-head { grid-template-columns: minmax(0, 1fr); } }
+.ptab { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 6px; border-radius: var(--r-xl); margin-bottom: clamp(16px, 2vw, 24px); }
+.ptab button { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px; border-radius: calc(var(--r-xl) - 6px); text-align: left; transition: background-color var(--dur-2); }
+.ptab button .ph { width: 56px; height: 56px; border-radius: 14px; }
+.ptab button b { display: block; font: 700 16px/1.15 var(--font-display); font-stretch: 108%; }
+.ptab button small { display: block; font-size: 12.5px; color: var(--ink-3); margin-top: 3px; }
+.ptab button:hover { background: var(--glass); }
+.ptab button[aria-selected="true"] { background: var(--btn-ink); color: var(--btn-on-ink); }
+.ptab button[aria-selected="true"] small { color: inherit; opacity: .7; }
+@media (max-width: 700px) { .ptab { grid-template-columns: minmax(0, 1fr); } }
+.fp { display: grid; grid-template-columns: minmax(0, 290px) minmax(0, 1fr); gap: clamp(16px, 2vw, 24px); align-items: start; }
+.fp-list { display: grid; gap: 6px; max-height: 640px; overflow: auto; padding-right: 4px; }
+.fp-list button { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px; border-radius: 16px; text-align: left; background: var(--glass); border: 1px solid var(--stroke); transition: background-color var(--dur-2), border-color var(--dur-2); }
+.fp-list button .ph { width: 64px; height: 48px; border-radius: 10px; background: #fff; }
+.fp-list button .ph img { object-fit: contain; }
+.fp-list button b { display: block; font: 700 14.5px/1.2 var(--font-display); font-stretch: 106%; }
+.fp-list button small { display: block; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.fp-list button em { display: block; font: 500 11.5px/1 var(--font-mono); font-style: normal; color: var(--acc-text); margin-top: 6px; }
+.fp-list button[aria-selected="true"] { border-color: var(--acc); background: var(--acc-soft); }
+.fp-main { padding: 8px; border-radius: var(--r-xl); }
+.fp-main .pview { aspect-ratio: 16 / 10.5; }
+.fp-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 10px 6px; }
+.fp-bar b { font: 700 20px/1.2 var(--font-display); font-stretch: 108%; }
+.fp-bar small { display: block; color: var(--ink-3); font-size: 13px; }
+@media (max-width: 900px) { .fp { grid-template-columns: minmax(0, 1fr); } .fp-list { grid-auto-flow: column; grid-auto-columns: minmax(220px, 70%); max-height: none; overflow-x: auto; order: 2; scrollbar-width: none; } }
+.cmp2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.cmp2 > div { padding: clamp(22px, 3vw, 34px); border-radius: var(--r-xl); }
+@media (max-width: 860px) { .cmp2 { grid-template-columns: minmax(0, 1fr); } }
+===HTML===
+<section class="fp-top" data-shape="plan" data-shape-x=".55" data-shape-y=".05" data-shape-s=".65" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><span>Floor plans</span></nav>
+    <div class="fp-head"><h1 class="h1 split">Every floor, <span class="accent">to scale.</span></h1><p class="lead rv d1">All the floor plans S. M. Builders has published, from Burj Al Jinnah's four apartment types to every level of S. M. House and S. M. Axis. Zoom in on any drawing.</p></div>
+    <div class="ptab glass rv" id="ptab" role="tablist" aria-label="Project"></div>
+    <div class="fp">
+      <div class="fp-list" id="fpl" role="tablist" aria-label="Plans" data-lenis-prevent></div>
+      <div class="fp-main glass rv" data-spot>
+        <div class="pview" id="pview" data-lenis-prevent><img alt="" draggable="false"><span class="pv-hint">Scroll / pinch to zoom · drag to pan</span><div class="pv-ctl"><button class="ib" id="zin" aria-label="Zoom in"></button><button class="ib" id="zout" aria-label="Zoom out"></button><button class="ib" id="zfull" aria-label="Open full screen"></button></div></div>
+        <div class="fp-bar"><span><b id="fpn"></b><small id="fpt"></small></span><span class="acts" style="margin:0"><a class="btn btn-glass btn-sm" id="fpProj" href="#" data-i="arrow">Project details</a><a class="btn btn-primary btn-sm" id="fpAsk" href="#" target="_blank" rel="noopener" data-i="wa">Ask about this plan</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-shape="house" data-shape-x="-.6" data-shape-y=".15" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Unit sizes</span><h2 class="h2 split">How much <span class="accent">room?</span></h2></div><p class="lead rv d1">Sizes as published: Burj Al Jinnah lists gross area, S. M. Axis lists net area from its area schedule, so the two aren't directly comparable.</p></div>
+    <div class="cmp2">
+      <div class="glass rv" data-spot><span class="kicker">Burj Al Jinnah · gross sq ft</span><div class="bars" id="b1"></div></div>
+      <div class="glass rv d1" data-spot><span class="kicker">S. M. Axis · net sq ft</span><div class="bars" id="b2"></div></div>
+    </div>
+  </div>
+</section>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, img, I, wa} = SM, P = D.P;
+  $('#zin').innerHTML = I.plus; $('#zout').innerHTML = I.minus; $('#zfull').innerHTML = I.expand;
+  $('#ptab').innerHTML = P.map((p, i) => `<button role="tab" aria-selected="${!i}" data-s="${p.s}">${img(p.cover, '')}<span><b>${esc(p.n)}</b><small>${p.plans.length} plans · ${esc(p.area)}</small></span></button>`).join('');
+  const pv = SM.planViewer($('#pview')); let cp = P[0], cj = 0;
+  const showPlan = j => { cj = j; const x = cp.plans[j]; pv.set(x.img.src, x.img.fb, `${cp.n}, ${x.n}`); $('#fpn').textContent = `${cp.n} · ${x.n}`; $('#fpt').textContent = x.t + (x.area ? ` · ${x.area.toLocaleString()} ${x.unit}` : '');
+    $('#fpAsk').href = wa(`Hi S. M. Builders, I'm looking at the ${x.n} (${x.t}) floor plan at ${cp.n}. Please share availability and the price.`);
+    $$('#fpl button').forEach((b, k) => b.setAttribute('aria-selected', k === j)); };
+  const showProj = s => { cp = P.find(p => p.s === s) || P[0]; $$('#ptab button').forEach(b => b.setAttribute('aria-selected', b.dataset.s === cp.s)); $('#fpProj').href = `project.html?p=${cp.s}#plans`;
+    $('#fpl').innerHTML = cp.plans.map((x, j) => `<button role="tab" aria-selected="${!j}" data-j="${j}">${img(x.img, '')}<span><b>${esc(x.n)}</b><small>${esc(x.t)}</small>${x.area ? `<em>${x.area.toLocaleString()} sq ft</em>` : ''}</span></button>`).join('');
+    SM.wireImgs($('#fpl')); showPlan(0); history.replaceState(null, '', '#' + cp.s); };
+  $('#ptab').addEventListener('click', e => { const b = e.target.closest('button'); if (b) showProj(b.dataset.s); });
+  $('#fpl').addEventListener('click', e => { const b = e.target.closest('button'); if (b) showPlan(+b.dataset.j); });
+  $('#zin').onclick = () => pv.zoom(1.5); $('#zout').onclick = () => pv.zoom(1 / 1.5);
+  $('#zfull').onclick = () => SM.lightbox(cp.plans.map(x => ({ src: x.img.src, fb: x.img.fb, cap: `${cp.n} · ${x.n} · ${x.t}` })), cj);
+  addEventListener('keydown', e => { if (document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return; if (e.key === 'ArrowRight' && !document.querySelector('.vlb.open')) showPlan((cj + 1) % cp.plans.length); if (e.key === 'ArrowLeft' && !document.querySelector('.vlb.open')) showPlan((cj - 1 + cp.plans.length) % cp.plans.length); });
+  showProj(location.hash.slice(1));
+  const bars = (rows) => { const mx = Math.max(...rows.map(r => r[1])); return rows.map(r => `<div class="bar-r"><span><b>${esc(r[0])}</b><small>${esc(r[2])}</small></span><span class="bar-t"><i style="--v:${(r[1] / mx).toFixed(3)}"></i></span><span class="v">${r[1].toLocaleString()}</span></div>`).join(''); };
+  $('#b1').innerHTML = bars(P[0].plans.map(x => [x.n, x.area, x.t]));
+  $('#b2').innerHTML = bars(P[2].types.map(t => ['Type ' + t[0], t[1], '3 bed']));
+});

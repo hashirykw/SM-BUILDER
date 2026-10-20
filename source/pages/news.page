@@ -1,0 +1,57 @@
+@page: news
+@title: News & updates · S. M. Builders & Developers
+@desc: Construction milestones, partnerships, recognition and events from S. M. Builders & Developers: Burj Al Jinnah, S. M. House and S. M. Axis.
+===CSS===
+.nw-top { padding-top: calc(14px + var(--nav-h) + clamp(32px, 5vw, 70px)); }
+.nw-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-xl); align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.nw-head .h1 { font-size: clamp(42px, 5.4vw, 86px); }
+@media (max-width: 860px) { .nw-head { grid-template-columns: minmax(0, 1fr); } }
+.lead-story { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 0; padding: 0; overflow: hidden; border-radius: var(--r-xl); margin-bottom: clamp(28px, 4vw, 48px); }
+.lead-story .yt, .lead-story .yt.on { border-radius: 0; height: 100%; min-height: 340px; aspect-ratio: auto; border: 0; }
+.lead-story .tx { padding: clamp(24px, 3.4vw, 48px); display: flex; flex-direction: column; gap: var(--space-md); justify-content: center; }
+@media (max-width: 860px) { .lead-story { grid-template-columns: minmax(0, 1fr); } .lead-story .yt { min-height: 0; aspect-ratio: 16 / 9; } }
+.nbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 22px; }
+.ngrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.ngrid .nc.out { display: none; }
+@media (max-width: 1100px) { .ngrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .ngrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .nc b { font-size: 15px; } }
+@media (max-width: 420px) { .ngrid { grid-template-columns: minmax(0, 1fr); } }
+===HTML===
+<section class="nw-top" data-shape="cloud" data-shape-s="1.2" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><span>News &amp; updates</span></nav>
+    <div class="nw-head"><h1 class="h1 split">News &amp; <span class="accent">updates.</span></h1><p class="lead rv d1">Construction milestones, partnerships, recognition and events, in the order they happened. Follow along on <a class="tlink" href="https://www.facebook.com/SMBuildersDeveloper" target="_blank" rel="noopener">Facebook</a> and <a class="tlink" href="https://www.youtube.com/@SMBuildersDeveloper" target="_blank" rel="noopener">YouTube</a>.</p></div>
+    <div class="lead-story glass rv" id="leadStory"></div>
+    <div class="nbar"><div class="chips" id="chips" role="group" aria-label="Filter news"></div><span class="muted small" id="ncount" aria-live="polite"></span></div>
+    <div class="ngrid" id="ngrid"></div>
+  </div>
+</section>
+<div class="sec tight" data-shape="logo" data-shape-x=".55" data-shape-s=".55" data-shape-a=".3"><div class="wrap"><div class="stmt gframe rv"><div style="position:relative;z-index:1"><h2 class="h2" style="font-size:clamp(28px,3.4vw,50px)">See the progress <span class="accent">in person.</span></h2><p class="lead" style="margin-top:14px">Our sales team arranges site visits to Burj Al Jinnah, S. M. House and S. M. Axis.</p></div><div class="acts"><a class="btn btn-acc" href="contact.html#enquire" data-i="arrow">Book a visit</a></div></div></div></div>
+<div class="mdl" id="mdl" role="dialog" aria-modal="true" aria-labelledby="mdlT" data-lenis-prevent><div class="mdl-c glass solid" id="mdlC"></div></div>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, img, I} = SM, N = D.N;
+  const L = N[0];
+  $('#leadStory').innerHTML = `${SM.video(L.video, L.t, L.img)}<div class="tx"><span class="kicker">${esc(L.cat)} · ${esc(L.when)}</span><h2 class="h2" style="font-size:clamp(28px,3vw,46px)">${esc(L.t)}</h2><p class="muted">${esc(L.p)}</p></div>`;
+  const cats = ['All'].concat([...new Set(N.map(n => n.cat))]);
+  $('#chips').innerHTML = cats.map((c, i) => `<button type="button" aria-pressed="${!i}" data-c="${c}">${c}<span>${c === 'All' ? N.length : N.filter(n => n.cat === c).length}</span></button>`).join('');
+  $('#ngrid').innerHTML = N.slice(1).map((n, i) => `<button class="nc rv d${i % 4}" data-id="${n.id}" data-c="${n.cat}" id="${n.id}" data-spot>${img(n.img, n.t)}<span class="nx"><span class="nm"><em>${esc(n.cat)}</em><span>${esc(n.when)}</span></span><b>${esc(n.t)}</b></span></button>`).join('');
+  const cards = $$('#ngrid .nc');
+  const filt = c => { let k = 0; cards.forEach(x => { const on = c === 'All' || x.dataset.c === c; x.classList.toggle('out', !on); if (on) { k++; x.classList.add('in'); } }); $('#ncount').textContent = `${k} stories`; };
+  $('#chips').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('#chips button').forEach(x => x.setAttribute('aria-pressed', x === b)); filt(b.dataset.c); });
+  filt('All');
+  /* modal */
+  const mdl = $('#mdl'), mc = $('#mdlC'); let last = null;
+  const open = id => { const n = N.find(x => x.id === id); if (!n) return; last = document.activeElement;
+    mc.innerHTML = `<div class="mi">${n.video ? SM.video(n.video, n.t, n.img) : img(n.img, n.t)}</div><div class="mx"><button class="ib x" aria-label="Close">${I.x}</button><span class="kicker">${esc(n.cat)} · ${esc(n.when)}</span><h2 class="h3" id="mdlT" style="font-size:clamp(22px,2.4vw,32px)">${esc(n.t)}</h2><p class="muted">${esc(n.p)}</p>
+      ${n.gallery ? `<div class="mdl-g">${n.gallery.map((g, j) => `<button data-j="${j}" aria-label="Open photo ${j + 1}">${img(g, '')}</button>`).join('')}</div>` : ''}
+      <div class="acts" style="margin-top:auto">${n.link ? `<a class="btn btn-primary btn-sm" href="${esc(n.link)}" target="_blank" rel="noopener" data-i="${/pdf$/i.test(n.link) ? 'doc' : 'ne'}">${esc(n.linkLabel || 'Read more')}</a>` : ''}<button class="btn btn-glass btn-sm" data-share data-i="share">Share</button></div></div>`;
+    SM.enhanceButtons(mc); SM.wireImgs(mc); mdl.classList.add('open'); SM.lenis && SM.lenis.stop(); history.replaceState(null, '', '#' + id); setTimeout(() => $('.x', mc).focus(), 60);
+    $('.x', mc).onclick = close; const g = $('.mdl-g', mc); if (g) g.onclick = e => { const b = e.target.closest('button'); if (b) SM.lightbox(n.gallery.map(x => ({ src: x.src, fb: x.fb, cap: n.t })), +b.dataset.j); };
+    $('[data-share]', mc).onclick = async () => { try { if (navigator.share) await navigator.share({ title: n.t, url: location.href }); else SM.copy(location.href, 'Link copied'); } catch (e) { } }; };
+  const close = () => { mdl.classList.remove('open'); SM.lenis && SM.lenis.start(); history.replaceState(null, '', location.pathname); last && last.focus && last.focus(); setTimeout(() => { if (!mdl.classList.contains('open')) mc.innerHTML = ''; }, 400); };
+  mdl.addEventListener('click', e => { if (e.target === mdl) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mdl.classList.contains('open') && !$('.vlb.open')) close(); });
+  $('#ngrid').addEventListener('click', e => { const b = e.target.closest('.nc'); if (b) open(b.dataset.id); });
+  const h = location.hash.slice(1); if (h && N.some(n => n.id === h)) setTimeout(() => open(h), 500);
+});

@@ -1,0 +1,102 @@
+@page: contact
+@title: Contact · S. M. Builders & Developers, Karachi
+@desc: Call 03-111-756-111 or visit our head office at Burj Al Jinnah, Main Jinnah Avenue, or our site offices in North Nazimabad. Book a site visit on WhatsApp.
+===CSS===
+.ct-top { padding-top: calc(14px + var(--nav-h) + clamp(32px, 5vw, 70px)); }
+.ct-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-xl); align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.ct-head .h1 { font-size: clamp(42px, 5.4vw, 86px); }
+@media (max-width: 860px) { .ct-head { grid-template-columns: minmax(0, 1fr); } }
+.lines4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.ln4 { padding: 20px; border-radius: var(--r-lg); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.ln4 .di { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--acc-soft); color: var(--acc-text); }
+.ln4 .di svg { width: 20px; height: 20px; }
+.ln4 small { font-size: 12.5px; color: var(--ink-3); }
+.ln4 a.big { display: block; font: 700 clamp(18px, 1.6vw, 22px)/1.2 var(--font-display); font-stretch: 106%; overflow-wrap: anywhere; transition: color var(--dur-2); }
+.ln4 a.big:hover { color: var(--acc-text); }
+.ln4 .sl { display: grid; gap: 4px; } .ln4 .sl a { font-weight: 600; font-variant-numeric: tabular-nums; } .ln4 .sl a:hover { color: var(--acc-text); }
+@media (max-width: 1000px) { .lines4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .lines4 { grid-template-columns: minmax(0, 1fr); } }
+.offs { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.otabs { display: grid; gap: 8px; align-content: start; }
+.otabs button { text-align: left; padding: 18px; border-radius: var(--r-lg); background: var(--glass); border: 1px solid var(--stroke); transition: background-color var(--dur-2), border-color var(--dur-2); }
+.otabs button small { font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--acc-text); }
+.otabs button b { display: block; margin-top: 8px; font: 700 18px/1.2 var(--font-display); font-stretch: 106%; }
+.otabs button span { display: block; margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+.otabs button[aria-selected="true"] { border-color: var(--acc); background: var(--acc-soft); }
+@media (max-width: 900px) { .offs { grid-template-columns: minmax(0, 1fr); } }
+.cform { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); padding: 0; overflow: hidden; border-radius: var(--r-xl); }
+.cform .l { padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: var(--space-lg); border-radius: 0; }
+.cform .l > * { position: relative; z-index: 1; }
+.cform .l ul { list-style: none; display: grid; gap: 12px; margin-top: auto; }
+.cform .l li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+.cform .l li svg { width: 18px; height: 18px; flex: none; margin-top: 3px; color: oklch(84% .1 84); }
+.cform form { padding: clamp(28px, 4vw, 56px); display: grid; gap: var(--space-md); align-content: start; }
+@media (max-width: 900px) { .cform { grid-template-columns: minmax(0, 1fr); } }
+.faqw { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(24px, 5vw, 80px); align-items: start; }
+.faqw .l { position: sticky; top: 120px; }
+@media (max-width: 900px) { .faqw { grid-template-columns: minmax(0, 1fr); } .faqw .l { position: static; } }
+===HTML===
+<section class="ct-top" data-shape="pin" data-shape-x=".55" data-shape-y=".05" data-shape-s=".65" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><span>Contact</span></nav>
+    <div class="ct-head"><h1 class="h1 split">Let's talk about <span class="accent">your next address.</span></h1><p class="lead rv d1">Call the UAN, WhatsApp the sales team, or visit us at Burj Al Jinnah on Main Jinnah Avenue. We'll share the price list and arrange a site visit.</p></div>
+    <div class="lines4" id="lines4"></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="house" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Offices</span><h2 class="h2 split">Three places <span class="accent">to find us.</span></h2></div><p class="lead rv d1">Our head office is inside Burj Al Jinnah; S. M. House and S. M. Axis each have a site office in North Nazimabad.</p></div>
+    <div class="offs">
+      <div class="otabs" id="otabs" role="tablist" aria-label="Offices"></div>
+      <div class="mapw glass rv"><iframe id="omap" title="Office map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="pinc glass solid"><b id="on"></b><p id="oa"></p><a class="btn btn-glass btn-sm" id="og" href="#" target="_blank" rel="noopener" data-i="map">Get directions</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tight" id="enquire" data-shape="logo" data-shape-x=".55" data-shape-y=".1" data-shape-s=".6" data-shape-a=".35" data-shape-ma=".15">
+  <div class="wrap">
+    <div class="cform glass rv">
+      <div class="l gframe">
+        <h2 class="h2" style="font-size:clamp(30px,3.6vw,52px)">Book a site visit <span class="accent">or a call back.</span></h2>
+        <p class="lead">Fill this in and WhatsApp opens with your message ready for our sales team.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span>The current price list and payment plan</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span>Floor plans for the units that fit your needs</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span>A guided visit at a time that suits you</span></li>
+        </ul>
+      </div>
+      <form id="cf" novalidate>
+        <div class="two"><div class="field"><label for="cn">Your name</label><input class="inp" id="cn" name="name" autocomplete="name"><span class="err-msg" aria-live="polite"></span></div><div class="field"><label for="cp">Phone</label><input class="inp" id="cp" name="phone" inputmode="tel" autocomplete="tel"><span class="err-msg" aria-live="polite"></span></div></div>
+        <div class="field"><label for="ce">Email (optional)</label><input class="inp" id="ce" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><span class="flabel" id="cpl">Project</span><div class="seg" role="group" aria-labelledby="cpl" data-name="proj"><button type="button" aria-pressed="true">Burj Al Jinnah</button><button type="button" aria-pressed="false">S. M. House</button><button type="button" aria-pressed="false">S. M. Axis</button><button type="button" aria-pressed="false">General</button></div></div>
+        <div class="field"><span class="flabel" id="cwl">I'd like</span><div class="seg" role="group" aria-labelledby="cwl" data-name="want"><button type="button" aria-pressed="true">A site visit</button><button type="button" aria-pressed="false">The price list</button><button type="button" aria-pressed="false">A call back</button></div></div>
+        <div class="field"><label for="cm">Message (optional)</label><textarea class="inp" id="cm" name="msg" placeholder="Unit type, floor, budget or a good time to call"></textarea></div>
+        <button class="btn btn-acc btn-block" type="submit" data-i="send">Send on WhatsApp</button>
+        <p class="form-ok" hidden>WhatsApp is open with your message. Press send and we'll get back to you.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" data-shape="key" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap faqw">
+    <div class="l"><span class="kicker">FAQ</span><h2 class="h2 split" style="font-size:clamp(32px,3.8vw,56px)">Questions buyers <span class="accent">ask us.</span></h2><p class="lead rv d1" style="margin-top:18px">Still unsure? The assistant at the bottom right answers instantly, or call 03-111-756-111.</p></div>
+    <div class="rv d1" id="faqList"></div>
+  </div>
+</section>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, I, wa} = SM, C = D.C;
+  $('#lines4').innerHTML = `
+    <div class="ln4 glass rv" data-spot><span class="di">${I.phone}</span><small>UAN</small><a class="big" href="tel:${C.uanTel}">${C.uan}</a></div>
+    <div class="ln4 glass rv d1" data-spot><span class="di">${I.wa}</span><small>WhatsApp sales</small><a class="big" href="${wa('Hi S. M. Builders, ')}" target="_blank" rel="noopener">${C.waShow}</a></div>
+    <div class="ln4 glass rv d2" data-spot><span class="di">${I.mail}</span><small>Email</small><a class="big" href="mailto:${C.email}">${C.email}</a></div>
+    <div class="ln4 glass rv d3" data-spot><span class="di">${I.phone}</span><small>Sales lines · feedback</small><span class="sl">${C.sales.map(s => `<a href="tel:${s[1]}">${s[0]}</a>`).join('')}<a href="tel:${C.feedback[1]}">${C.feedback[0]} <span class="muted small">feedback</span></a></span></div>`;
+  $('#otabs').innerHTML = C.offices.map((o, i) => `<button role="tab" aria-selected="${!i}" data-i="${i}"><small>${esc(o.k)}</small><b>${esc(o.n)}</b><span>${esc(o.a)}</span></button>`).join('');
+  const setO = i => { const o = C.offices[i], q = encodeURIComponent(o.q); $('#omap').src = `https://www.google.com/maps?q=${q}&output=embed`; $('#omap').title = 'Map: ' + o.n; $('#on').textContent = `${o.n} · ${o.k}`; $('#oa').textContent = o.a; $('#og').href = `https://www.google.com/maps/search/?api=1&query=${q}`; $$('#otabs button').forEach((b, k) => b.setAttribute('aria-selected', k === i)); };
+  $('#otabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setO(+b.dataset.i); }); setO(0);
+  $$('.seg').forEach(g => g.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('button', g).forEach(x => x.setAttribute('aria-pressed', x === b)); }));
+  SM.leadForm($('#cf'), f => ['Project: ' + $('[data-name=proj] [aria-pressed=true]', f).textContent, 'I would like: ' + $('[data-name=want] [aria-pressed=true]', f).textContent, $('#ce').value.trim() ? 'Email: ' + $('#ce').value.trim() : '', $('#cm').value.trim() ? 'Message: ' + $('#cm').value.trim() : '']);
+  SM.faq($('#faqList'));
+});

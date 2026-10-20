@@ -1,0 +1,332 @@
+@page: project
+@title: Project · S. M. Builders & Developers, Karachi
+@desc: Photos, floor plans, payment plan, amenities and location for S. M. Builders & Developers projects in Karachi.
+===CSS===
+.pv { padding-top: calc(14px + var(--nav-h) + clamp(28px, 4vw, 56px)); }
+.pv-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr); gap: clamp(20px, 3vw, 44px); align-items: start; }
+.frame { padding: 8px; border-radius: var(--r-xl); }
+.frame .main { position: relative; border-radius: calc(var(--r-xl) - 8px); overflow: hidden; aspect-ratio: 16 / 11; cursor: zoom-in; background: var(--bg-2); }
+.frame .main .ph { position: absolute; inset: 0; }
+.frame .main .ph img { transition: opacity var(--dur-3), transform 1.6s var(--ease-out); }
+.frame .main:hover .ph img { transform: scale(1.03); }
+.frame .main.tall .ph img { object-fit: contain; }
+.frame .zoom { position: absolute; right: 14px; bottom: 14px; z-index: 2; color: oklch(98% 0 0); background: oklch(15% .02 158 / .4); border-color: oklch(100% 0 0 / .2); }
+.frame .cap { position: absolute; left: 14px; bottom: 14px; z-index: 2; max-width: calc(100% - 90px); padding: 8px 12px; border-radius: 10px; font-size: 13px; color: #fff; background: oklch(15% .02 158 / .45); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 10px 2px 2px; scrollbar-width: none; }
+.thumbs::-webkit-scrollbar { display: none; }
+.thumbs button { flex: none; width: 92px; height: 66px; border-radius: 12px; overflow: hidden; opacity: .5; border: 2px solid transparent; transition: opacity var(--dur-2), border-color var(--dur-2); }
+.thumbs button:hover { opacity: .85; }
+.thumbs button[aria-current="true"] { opacity: 1; border-color: var(--acc-hi); }
+.thumbs .ph { width: 100%; height: 100%; }
+.info-p { padding: clamp(22px, 3vw, 36px); border-radius: var(--r-xl); position: sticky; top: calc(14px + var(--nav-h) + 20px); }
+.info-p .h1 { font-size: clamp(36px, 4vw, 62px); margin-top: 14px; }
+.info-p .tg { display: block; margin-top: 10px; font: 400 italic clamp(19px, 1.6vw, 24px)/1.25 var(--font-serif); color: var(--acc-text); }
+.info-p .loc { display: flex; gap: 8px; align-items: flex-start; margin-top: var(--space-md); color: var(--ink-2); font-size: 15px; }
+.info-p .loc svg { width: 18px; height: 18px; color: var(--acc-text); flex: none; margin-top: 3px; }
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: var(--space-xl); border-top: 1px solid var(--stroke); }
+.facts div { padding: 15px 0; border-bottom: 1px solid var(--stroke); }
+.facts div:nth-child(odd) { padding-right: 14px; } .facts div:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--stroke); }
+.facts dt { font-size: 12.5px; color: var(--ink-3); }
+.facts dd { margin-top: 4px; font: 600 15.5px/1.3 var(--font-body); }
+.info-p .acts { margin-top: var(--space-xl); display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; gap: 8px; align-items: center; }
+.info-p .acts .btn { justify-self: stretch; justify-content: space-between; }
+.info-p .acts .ib { width: 54px; height: 54px; }
+@media (max-width: 420px) { .info-p .acts { grid-template-columns: repeat(3, minmax(0, 1fr)); } .info-p .acts .btn { grid-column: 1 / -1; } .info-p .acts .ib { width: 100%; border-radius: 16px; } }
+@media (max-width: 1020px) { .pv-grid { grid-template-columns: minmax(0, 1fr); } .info-p { position: static; } }
+/* jump nav */
+.jn { position: sticky; top: calc(14px + var(--nav-h) + 10px); z-index: 50; margin-top: clamp(28px, 4vw, 48px); display: flex; gap: 4px; overflow-x: auto; padding: 5px; border-radius: var(--r-pill); scrollbar-width: none; width: max-content; max-width: 100%; transition: top var(--dur-3) var(--ease-out); }
+body.nav-hidden .jn { top: 12px; }
+.jn::-webkit-scrollbar { display: none; }
+.jn a { flex: none; padding: 9px 15px; border-radius: var(--r-pill); font-size: 13.5px; color: var(--ink-2); transition: background-color var(--dur-2), color var(--dur-2); white-space: nowrap; }
+.jn a:hover { color: var(--ink); } .jn a.on { background: var(--btn-ink); color: var(--btn-on-ink); }
+/* overview */
+.ov { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.ov .big { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.65; color: var(--ink-2); margin-top: var(--space-lg); }
+.hl { padding: clamp(22px, 3vw, 36px); }
+.hl ul { list-style: none; display: grid; gap: 0; margin-top: var(--space-md); position: relative; z-index: 1; }
+.hl li { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid oklch(80% .1 82 / .2); font-size: 15px; }
+.hl li:last-child { border-bottom: 0; }
+.hl li svg { width: 17px; height: 17px; color: oklch(84% .1 84); flex: none; margin-top: 3px; }
+.hl h3 { position: relative; z-index: 1; }
+@media (max-width: 900px) { .ov { grid-template-columns: minmax(0, 1fr); } }
+/* amenities */
+.am { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.am div { display: flex; gap: 12px; align-items: center; padding: 16px; border-radius: 16px; background: var(--glass); border: 1px solid var(--stroke); font-size: 14.5px; font-weight: 500; transition: border-color var(--dur-2), transform var(--dur-3) var(--ease-out); }
+.am div:hover { border-color: var(--stroke-3); transform: translateY(-2px); }
+.am i { width: 28px; height: 28px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--acc-soft); color: var(--acc-text); font: 600 11px/1 var(--font-mono); font-style: normal; }
+@media (max-width: 1000px) { .am { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .am { grid-template-columns: minmax(0, 1fr); } }
+.mats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: var(--space-xl); }
+.mats div { padding: 18px; border-radius: 16px; }
+.mats b { display: block; font: 700 16px/1.2 var(--font-display); font-stretch: 108%; }
+.mats small { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-3); }
+@media (max-width: 900px) { .mats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.uses { --cols: 4; --mcol: 72%; }
+.uses div { padding: 22px; border-radius: var(--r-lg); min-height: 170px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+.uses b { font: 700 20px/1.15 var(--font-display); font-stretch: 108%; }
+.uses span { color: var(--ink-2); font-size: 14px; }
+.uses em { font: 500 12px/1 var(--font-mono); font-style: normal; color: var(--acc-text); }
+@media (max-width: 1000px) { .uses { --cols: 2; } }
+/* gallery */
+.gal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: clamp(150px, 15vw, 220px); grid-auto-flow: dense; gap: 12px; }
+.gal button { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--stroke); cursor: zoom-in; }
+.gal button:nth-child(7n+1) { grid-column: span 2; grid-row: span 2; }
+.gal button:nth-child(7n+5) { grid-row: span 2; }
+.gal .ph { position: absolute; inset: 0; }
+.gal button:hover .ph img { transform: scale(1.06); }
+.gal button span.c { position: absolute; z-index: 2; left: 10px; bottom: 10px; padding: 6px 9px; border-radius: 9px; font-size: 12px; color: #fff; background: oklch(15% .02 158 / .5); opacity: 0; transform: translateY(6px); transition: opacity var(--dur-2), transform var(--dur-3) var(--ease-out); }
+.gal button:hover span.c { opacity: 1; transform: none; }
+@media (max-width: 760px) {
+  .gal { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; grid-auto-rows: 220px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gut) 20px; margin-inline: calc(var(--gut) * -1); scrollbar-width: none; }
+  .gal::-webkit-scrollbar { display: none; } .gal button { scroll-snap-align: start; grid-column: auto !important; grid-row: auto !important; }
+}
+/* plans */
+.pl { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .8fr); gap: clamp(16px, 2.4vw, 28px); align-items: start; }
+.pl .pvw { padding: 8px; border-radius: var(--r-xl); }
+.pl-side { display: grid; gap: var(--space-md); }
+.ptabs { display: grid; gap: 6px; }
+.ptabs button { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; border-radius: 14px; text-align: left; background: var(--glass); border: 1px solid var(--stroke); transition: background-color var(--dur-2), border-color var(--dur-2), color var(--dur-2); }
+.ptabs button b { font: 700 15px/1.2 var(--font-display); font-stretch: 108%; }
+.ptabs button small { display: block; font-size: 12.5px; color: var(--ink-3); margin-top: 3px; }
+.ptabs button span.a { font: 500 12px/1 var(--font-mono); color: var(--acc-text); white-space: nowrap; }
+.ptabs button[aria-selected="true"] { background: var(--btn-ink); color: var(--btn-on-ink); border-color: var(--btn-ink); }
+.ptabs button[aria-selected="true"] small, .ptabs button[aria-selected="true"] span.a { color: inherit; opacity: .7; }
+.ptabs.scroll { max-height: 520px; overflow: auto; padding-right: 4px; }
+@media (max-width: 900px) { .pl { grid-template-columns: minmax(0, 1fr); } .ptabs { grid-auto-flow: column; grid-auto-columns: minmax(170px, 46%); overflow-x: auto; max-height: none !important; scrollbar-width: none; } }
+.sizes { padding: clamp(20px, 2.6vw, 30px); border-radius: var(--r-lg); }
+/* payment */
+.pay { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 0; padding: 0; overflow: hidden; border-radius: var(--r-xl); }
+.pay-in { padding: clamp(24px, 3vw, 40px); display: grid; gap: var(--space-lg); align-content: start; border-right: 1px solid var(--stroke); }
+.pay-out { padding: clamp(24px, 3vw, 40px); display: grid; gap: var(--space-lg); align-content: start; }
+.kpis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.kpi { padding: 18px; border-radius: 18px; background: var(--glass); border: 1px solid var(--stroke); min-width: 0; }
+.kpi small { display: block; font-size: 12.5px; color: var(--ink-3); }
+.kpi b { display: block; margin-top: 8px; font: 800 clamp(22px, 2.3vw, 32px)/1.05 var(--font-display); font-stretch: 108%; letter-spacing: -.02em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.kpi em { display: block; margin-top: 6px; font: 500 12px/1.3 var(--font-mono); font-style: normal; color: var(--acc-text); }
+.kpi.big { grid-column: 1 / -1; background: linear-gradient(160deg, var(--green), var(--green-2)); color: var(--green-ink); border-color: transparent; }
+.kpi.big small { color: oklch(95% .02 90 / .7); }
+.kpi.big b { font-size: clamp(30px, 3.6vw, 48px); color: oklch(88% .09 86); }
+.split-bar { display: flex; height: 14px; border-radius: 14px; overflow: hidden; background: var(--glass-2); }
+.split-bar i { display: block; height: 100%; transition: flex-basis .8s var(--ease-out); }
+.split-bar i:nth-child(1) { background: var(--acc-hi); } .split-bar i:nth-child(2) { background: var(--acc-lo); } .split-bar i:nth-child(3) { background: oklch(60% .1 150); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; }
+.rng { width: 100%; accent-color: var(--acc); height: 28px; }
+.money { position: relative; }
+.money span { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--ink-3); font-size: 14px; pointer-events: none; }
+.money .inp { padding-left: 46px; font-variant-numeric: tabular-nums; }
+.tog { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 14.5px; }
+.tog input { appearance: none; width: 46px; height: 26px; border-radius: 26px; background: var(--glass-3); border: 1px solid var(--stroke-2); position: relative; transition: background-color var(--dur-2); cursor: pointer; flex: none; }
+.tog input::after { content: ""; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); transition: transform var(--dur-3) var(--ease-out); }
+.tog input:checked { background: var(--acc); } .tog input:checked::after { transform: translateX(20px); background: var(--on-acc); }
+.rates { display: grid; gap: 6px; }
+.rates button { display: grid; grid-template-columns: 74px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px 10px; border-radius: 12px; border: 1px solid transparent; text-align: left; transition: background-color var(--dur-2), border-color var(--dur-2); }
+.rates button:hover { background: var(--glass); }
+.rates button[aria-pressed="true"] { background: var(--glass-2); border-color: var(--stroke-2); }
+.rates b { font: 600 13.5px/1.2 var(--font-body); }
+.rates .bar-t { height: 8px; }
+.rates .v { font: 500 13px/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.fine { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+@media (max-width: 900px) { .pay { grid-template-columns: minmax(0, 1fr); } .pay-in { border-right: 0; border-bottom: 1px solid var(--stroke); } }
+/* videos */
+.vids { --cols: 3; --mcol: 86%; }
+/* timeline */
+.tl { position: relative; display: grid; gap: 0; padding-left: 28px; }
+.tl::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 1px; background: linear-gradient(var(--acc), var(--stroke)); }
+.tl > div { position: relative; padding: 0 0 28px; }
+.tl > div::before { content: ""; position: absolute; left: -26px; top: 5px; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--acc); }
+.tl > div:first-child::before { background: var(--acc); box-shadow: 0 0 0 5px var(--acc-soft); }
+.tl small { font: 500 12px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--acc-text); }
+.tl b { display: block; margin-top: 8px; font: 700 20px/1.2 var(--font-display); font-stretch: 108%; }
+.tl p { margin-top: 6px; color: var(--ink-2); max-width: 56ch; }
+.upd { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+@media (max-width: 900px) { .upd { grid-template-columns: minmax(0, 1fr); } }
+/* map */
+.mloc { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: 16px; align-items: stretch; }
+.mloc .near { padding: clamp(20px, 2.6vw, 30px); border-radius: var(--r-xl); }
+.mloc .near li { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--stroke); font-size: 14.5px; list-style: none; }
+.mloc .near li span { font: 500 12.5px/1.4 var(--font-mono); color: var(--acc-text); white-space: nowrap; }
+@media (max-width: 900px) { .mloc { grid-template-columns: minmax(0, 1fr); } }
+/* tour */
+.tour { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(20px, 4vw, 56px); padding: clamp(24px, 4vw, 52px); }
+.tour .tim { position: relative; z-index: 1; aspect-ratio: 1122 / 1402; max-height: 520px; justify-self: center; border-radius: var(--r-lg); overflow: hidden; width: 100%; max-width: 420px; }
+.tour .tim .ph { position: absolute; inset: 0; }
+.tour > div { position: relative; z-index: 1; }
+@media (max-width: 860px) { .tour { grid-template-columns: minmax(0, 1fr); } }
+/* enquiry */
+.penq { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); padding: clamp(26px, 4vw, 52px); border-radius: var(--r-xl); align-items: start; }
+.penq form { display: grid; gap: var(--space-md); }
+@media (max-width: 900px) { .penq { grid-template-columns: minmax(0, 1fr); } }
+.pn { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: var(--space-xl); }
+.pn a { padding: 20px 22px; border-radius: var(--r-lg); display: grid; gap: 4px; }
+.pn a:last-child { text-align: right; }
+.pn small { font-size: 12.5px; color: var(--ink-3); }
+.pn b { font: 700 18px/1.2 var(--font-display); font-stretch: 108%; }
+.rel-h { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-lg); margin-bottom: var(--space-lg); }
+.nf { padding: 60px 24px; text-align: center; border-radius: var(--r-xl); }
+===HTML===
+<section class="pv" data-shape="tower" data-shape-x=".55" data-shape-y=".05" data-shape-s=".7" data-shape-a=".22" data-shape-ma=".1">
+  <div class="wrap" id="pv"></div>
+</section>
+<div id="body"></div>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, I, img, wa} = SM, P = D.P;
+  const slug = new URLSearchParams(location.search).get('p') || (location.hash.slice(1)), p = P.find(x => x.s === slug), i0 = P.indexOf(p);
+  if (!p) {
+    $('#pv').innerHTML = `<div class="nf glass"><h1 class="h2">Project not <span class="accent">found.</span></h1><p class="lead" style="margin:16px auto 0">That link may be out of date. See all our projects instead.</p><div class="acts" style="justify-content:center"><a class="btn btn-primary" href="projects.html" data-i="arrow">See all projects</a></div></div>`;
+    return;
+  }
+  document.title = `${p.n} · S. M. Builders & Developers, Karachi`;
+  const md = $('meta[name="description"]'); if (md) md.content = p.d.slice(0, 158);
+  const msg = `Hi S. M. Builders, I'm interested in ${p.n}. Please share availability, the price list and the payment plan.`;
+  const tall = x => /360-image|Rull-up|Payment-Plan/.test(x.src);
+  $('#pv').innerHTML = `
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><a href="projects.html">Projects</a><i></i><span>${esc(p.n)}</span></nav>
+    <div class="pv-grid">
+      <div class="rv">
+        <div class="frame glass" data-spot>
+          <div class="main${tall(p.pics[0]) ? ' tall' : ''}" id="main" role="button" tabindex="0" aria-label="Open photo viewer">${img(p.pics[0], p.pics[0].cap || p.n, '', true)}<span class="cap" id="mcap">${esc(p.pics[0].cap || p.n)}</span><button class="ib zoom" id="zoom" aria-label="View all ${p.pics.length} photos full screen">${I.expand}</button></div>
+          ${p.pics.length > 1 ? `<div class="thumbs" id="thumbs">${p.pics.map((x, j) => `<button aria-label="Show photo ${j + 1}: ${esc(x.cap || '')}" aria-current="${!j}" data-j="${j}">${img(x, '')}</button>`).join('')}</div>` : ''}
+        </div>
+      </div>
+      <aside class="info-p glass rv d1" data-spot>
+        <span class="pill ${p.stage}">${esc(p.status)}</span>
+        <h1 class="h1 split">${esc(p.n)}</h1>
+        <span class="tg">${esc(p.tagline)}</span>
+        <p class="loc">${I.pin}<span>${esc(p.loc)}</span></p>
+        <dl class="facts">${p.facts.map(f => `<div><dt>${f[0]}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>
+        <div class="acts"><a class="btn btn-primary" href="#enq" data-i="arrow">Get the price list</a><a class="ib" href="tel:+923111756111" aria-label="Call S. M. Builders">${I.phone}</a><a class="ib" href="${wa(msg)}" target="_blank" rel="noopener" aria-label="Message sales on WhatsApp">${I.wa}</a><button class="ib" id="share" aria-label="Share this project">${I.share}</button></div>
+      </aside>
+    </div>`;
+
+  const S = [];  /* jump-nav sections */
+  const sec = (id, label, html, shape = '') => { S.push([id, label]); return `<section class="sec tight" id="${id}" ${shape}>${html}</section>`; };
+  let H = '';
+  H += sec('overview', 'Overview', `<div class="wrap ov">
+      <div><span class="kicker">${esc(p.kindLabel)}</span><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">About <span class="accent">${esc(p.n)}.</span></h2><p class="big rv d1">${esc(p.d)}</p></div>
+      <div class="hl gframe rv d2"><h3 class="h3">What sets it apart</h3><ul>${p.hl.map(a => `<li>${I.check}<span>${esc(a)}</span></li>`).join('')}</ul></div>
+    </div>`, 'data-shape="plan" data-shape-x="-.55" data-shape-y=".1" data-shape-s=".6" data-shape-a=".25" data-shape-ma=".1"');
+  H += sec('amenities', 'Amenities', `<div class="wrap"><div class="rel-h"><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">Amenities &amp; <span class="accent">features.</span></h2><span class="muted">${p.a.length} listed by S. M. Builders</span></div>
+      <div class="am">${p.a.map((a, j) => `<div class="rv d${j % 4}"><i>${String(j + 1).padStart(2, '0')}</i><span>${esc(a)}</span></div>`).join('')}</div>
+      ${p.materials ? `<h3 class="h3" style="margin-top:clamp(36px,5vw,64px)">Top shelf materials</h3><div class="mats">${p.materials.map(m => `<div class="glass rv" data-spot><b>${esc(m[0])}</b><small>${esc(m[1])}</small></div>`).join('')}</div>` : ''}
+      ${p.uses ? `<h3 class="h3" style="margin-top:clamp(36px,5vw,64px);margin-bottom:16px">Floor by floor</h3><div class="uses mrail">${p.uses.map((u, j) => `<div class="glass rv d${j}" data-spot><em>0${j + 1}</em><span><b>${esc(u[0])}</b><br><span>${esc(u[1])}</span></span></div>`).join('')}</div>` : ''}
+    </div>`, 'data-shape="house" data-shape-x=".6" data-shape-y=".2" data-shape-s=".55" data-shape-a=".25" data-shape-ma=".1"');
+  if (p.pics.length > 1) H += sec('gallery', 'Gallery', `<div class="wrap"><div class="rel-h"><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">${p.pics.length + (p.extra || []).length} <span class="accent">views.</span></h2><button class="btn btn-glass btn-sm" id="galAll" data-i="expand">Full-screen gallery</button></div>
+      <div class="gal" id="gal">${p.pics.concat(p.extra || []).map((x, j) => `<button data-j="${j}" aria-label="Open photo: ${esc(x.cap || p.n)}">${img(x, x.cap || p.n)}<span class="c">${esc(x.cap || '')}</span></button>`).join('')}</div></div>`, 'data-shape="cloud" data-shape-s="1.2" data-shape-a=".25" data-shape-ma=".1"');
+  const hasArea = p.plans.some(x => x.area);
+  H += sec('plans', 'Floor plans', `<div class="wrap"><div class="rel-h"><div><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">Floor <span class="accent">plans.</span></h2><p class="muted" style="margin-top:10px">Scroll or pinch to zoom, drag to look around, double-click to reset.</p></div><a class="btn btn-glass btn-sm" href="floor-plans.html#${p.s}" data-i="plan">All floor plans</a></div>
+      <div class="pl"><div class="pvw glass"><div class="pview" id="pview" data-lenis-prevent><img alt="" draggable="false"><span class="pv-hint" id="pvHint"></span><div class="pv-ctl"><button class="ib" id="zin" aria-label="Zoom in">${I.plus}</button><button class="ib" id="zout" aria-label="Zoom out">${I.minus}</button><button class="ib" id="zfull" aria-label="Open full screen">${I.expand}</button></div></div></div>
+      <div class="pl-side"><div class="ptabs${p.plans.length > 6 ? ' scroll' : ''}" id="ptabs" role="tablist" aria-label="Floor plans" data-lenis-prevent>${p.plans.map((x, j) => `<button role="tab" aria-selected="${!j}" data-j="${j}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.area ? `<span class="a">${x.area.toLocaleString()} sq ft</span>` : ''}</button>`).join('')}</div>
+      ${hasArea || p.types ? `<div class="sizes glass rv"><h3 class="h3" style="font-size:18px">Unit sizes</h3><p class="muted small" style="margin:6px 0 16px">${hasArea ? 'Gross area, sq ft' : 'Net area, sq ft (area schedule)'}</p><div class="bars">${(hasArea ? p.plans.filter(x => x.area).map(x => [x.n, x.area, x.t]) : p.types.map(t => ['Type ' + t[0], t[1], '3 bed'])).map((r, j, a) => `<div class="bar-r"><span><b>${esc(r[0])}</b><small>${esc(r[2])}</small></span><span class="bar-t"><i style="--v:${(r[1] / Math.max(...a.map(z => z[1]))).toFixed(3)}"></i></span><span class="v">${r[1].toLocaleString()}</span></div>`).join('')}</div></div>` : ''}
+      </div></div></div>`, 'data-shape="plan" data-shape-x=".6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".2" data-shape-ma=".1"');
+
+  /* payment */
+  let payHTML = '';
+  if (p.pay.type === 'rates') {
+    const R = p.pay.rates, mx = Math.max(...R.map(r => r[1]));
+    payHTML = `<div class="pay glass rv" data-spot>
+      <div class="pay-in"><div><span class="kicker">Payment calculator</span><h2 class="h2" style="font-size:clamp(28px,3vw,44px)">Work out <span class="accent">your space.</span></h2></div>
+        <div class="field"><span class="flabel" id="rl">Floor · published gross rate per sq ft</span><div class="rates" id="rates" role="group" aria-labelledby="rl">${R.map((r, j) => `<button type="button" aria-pressed="${j === 0}" data-j="${j}"><b>${r[2] ? '7th + roof' : ordinal(r[0]) + ' floor'}</b><span class="bar-t in"><i style="--v:${(r[1] / mx).toFixed(3)}"></i></span><span class="v">Rs ${r[1].toLocaleString()}</span></button>`).join('')}</div></div>
+        <div class="field"><label for="sqft">Area: <b id="sqv">1,000</b> sq ft</label><input class="rng" id="sqft" type="range" min="200" max="6000" step="50" value="1000"></div>
+        <label class="tog"><input type="checkbox" id="corner"> Corner outlet (+${p.pay.corner}%)</label>
+      </div>
+      <div class="pay-out" aria-live="polite">
+        <div class="kpis"><div class="kpi big"><small>Estimated total</small><b id="kTot">—</b><em id="kTotW"></em></div>
+          <div class="kpi"><small>At booking (${p.pay.down}%)</small><b id="kDown">—</b></div>
+          <div class="kpi"><small>${p.pay.months} monthly instalments (${p.pay.inst}%)</small><b id="kMon">—</b><em>per month</em></div>
+          <div class="kpi"><small>On possession (${p.pay.poss}%)</small><b id="kPos">—</b></div>
+          <div class="kpi"><small>Rate applied</small><b id="kRate">—</b><em>per sq ft, gross</em></div></div>
+        <div class="split-bar" aria-hidden="true"><i style="flex-basis:${p.pay.down}%"></i><i style="flex-basis:${p.pay.inst}%"></i><i style="flex-basis:${p.pay.poss}%"></i></div>
+        <div class="legend"><span><i style="background:var(--acc-hi)"></i>${p.pay.down}% booking</span><span><i style="background:var(--acc-lo)"></i>${p.pay.inst}% over ${p.pay.months} months</span><span><i style="background:oklch(60% .1 150)"></i>${p.pay.poss}% possession</span></div>
+        <p class="fine">${esc(p.pay.note)} This calculator is an estimate only; the sales team confirms final prices, availability and the schedule.</p>
+        <a class="btn btn-acc" id="payWa" href="#" target="_blank" rel="noopener" data-i="wa">Send this to sales</a>
+      </div></div>`;
+  } else if (p.pay.type === 'plan') {
+    payHTML = `<div class="pay glass rv" data-spot>
+      <div class="pay-in"><div><span class="kicker">Payment plan</span><h2 class="h2" style="font-size:clamp(28px,3vw,44px)">${p.pay.down}% down. <span class="accent">${p.pay.months} easy months.</span></h2></div>
+        <p class="muted">Enter the price quoted by our sales team to see how the plan splits.</p>
+        <div class="field"><label for="price">Unit price</label><div class="money"><span>Rs</span><input class="inp" id="price" inputmode="numeric" placeholder="Price from the sales team" autocomplete="off"></div></div>
+        <div class="field"><label for="dp">Down payment: <b id="dpv">${p.pay.down}</b>%</label><input class="rng" id="dp" type="range" min="${p.pay.down}" max="80" step="5" value="${p.pay.down}"></div>
+      </div>
+      <div class="pay-out" aria-live="polite">
+        <div class="kpis"><div class="kpi big"><small>Monthly instalment</small><b id="kMon">Enter a price</b><em id="kMonW">for ${p.pay.months} months</em></div>
+          <div class="kpi"><small>Down payment</small><b id="kDown">—</b></div><div class="kpi"><small>Paid over ${p.pay.months} months</small><b id="kRest">—</b></div></div>
+        <div class="split-bar" aria-hidden="true"><i id="sb1" style="flex-basis:${p.pay.down}%"></i><i id="sb2" style="flex-basis:${100 - p.pay.down}%"></i></div>
+        <p class="fine">${esc(p.pay.note)} Figures are an estimate; the sales team confirms the final schedule.</p>
+        <a class="btn btn-acc" href="${wa(msg)}" target="_blank" rel="noopener" data-i="wa">Ask for the price list</a>
+      </div></div>`;
+  } else {
+    payHTML = `<div class="stmt gframe rv"><div style="position:relative;z-index:1"><span class="kicker" style="color:oklch(84% .1 84)">Booking open</span><h2 class="h2" style="font-size:clamp(28px,3.4vw,50px)">Get the S. M. Axis <span class="accent">price list.</span></h2><p class="lead" style="margin-top:14px">${esc(p.pay.note)}</p></div><div class="acts"><a class="btn btn-acc" href="${wa(msg)}" target="_blank" rel="noopener" data-i="wa">Ask on WhatsApp</a><a class="btn btn-glass" href="tel:+923111756111" data-i="phone">03-111-756-111</a></div></div>`;
+  }
+  H += sec('pay', 'Payment', `<div class="wrap">${payHTML}</div>`, 'data-shape="key" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".25" data-shape-ma=".1"');
+
+  if (p.tour) H += sec('tour', '360° tour', `<div class="wrap"><div class="tour gframe rv"><div><span class="kicker" style="color:oklch(84% .1 84)">Virtual tour</span><h2 class="h2" style="font-size:clamp(30px,3.6vw,54px)">Walk through an apartment <span class="accent">in 360°.</span></h2><p class="lead" style="margin-top:16px">Explore an S. M. Axis 3-bed apartment from any device before you visit the site.</p><div class="acts"><a class="btn btn-acc" href="${p.tour}" target="_blank" rel="noopener" data-i="tour">Start the 360° tour</a></div></div><div class="tim">${img(p.pics[0], 'S. M. Axis 360° virtual tour')}</div></div></div>`);
+  if (p.videos.length) H += sec('videos', 'Videos', `<div class="wrap"><div class="rel-h"><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">On <span class="accent">video.</span></h2><a class="btn btn-glass btn-sm" href="${D.C.social.yt}" target="_blank" rel="noopener" data-i="yt">YouTube channel</a></div><div class="vids mrail">${p.videos.map(v => `<div class="rv">${SM.video(v[0], v[1])}</div>`).join('')}</div></div>`);
+  H += sec('updates', 'Updates', `<div class="wrap upd"><div><span class="kicker">Construction &amp; milestones</span><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">Progress, <span class="accent">on record.</span></h2><p class="lead rv d1" style="margin-top:16px">${esc(p.status)}.</p></div><div class="tl rv d1">${p.updates.map(u => `<div><small>${esc(u[0])}</small><b>${esc(u[1])}</b><p>${esc(u[2])}</p></div>`).join('')}</div></div>`, 'data-shape="tower" data-shape-x=".6" data-shape-s=".55" data-shape-a=".25" data-shape-ma=".1"');
+  const q = encodeURIComponent(p.q);
+  H += sec('map', 'Location', `<div class="wrap"><div class="mloc">
+      <div class="mapw glass rv"><iframe title="Map showing ${esc(p.n)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>
+      <div class="pinc glass solid"><b>${esc(p.n)}</b><p>${esc(p.loc)}</p><a class="btn btn-glass btn-sm" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener" data-i="map">Open in Google Maps</a></div></div>
+      ${p.near ? `<div class="near glass rv d1"><h3 class="h3" style="font-size:20px;margin-bottom:8px">Drive times</h3><ul>${p.near.map(n => `<li>${esc(n[0])}<span>${n[1] ? n[1] + ' min' : esc(n[2])}</span></li>`).join('')}</ul></div>` : `<div class="near glass rv d1"><h3 class="h3" style="font-size:20px;margin-bottom:8px">Site office</h3><p class="muted">${esc((D.C.offices.find(o => o.n === p.n) || D.C.offices[0]).a)}</p><ul style="margin-top:12px">${p.hl.slice(0, 3).map(h => `<li>${esc(h)}</li>`).join('')}</ul></div>`}
+    </div></div>`, 'data-shape="pin" data-shape-x=".55" data-shape-y=".15" data-shape-s=".55" data-shape-a=".25" data-shape-ma=".1"');
+  const prev = P[(i0 - 1 + P.length) % P.length], next = P[(i0 + 1) % P.length];
+  H += `<section class="sec tight" id="enq"><div class="wrap">
+      <div class="penq glass rv" data-spot>
+        <div><span class="kicker">${esc(p.n)}</span><h2 class="h2" style="font-size:clamp(28px,3.2vw,46px)">Get the price list and <span class="accent">book a visit.</span></h2><p class="lead" style="margin-top:16px">We'll send current availability and the payment schedule, and arrange a site visit. Or call <a class="tlink" href="tel:+923111756111">03-111-756-111</a>.</p></div>
+        <form id="pform" novalidate>
+          <div class="two"><div class="field"><label for="en">Your name</label><input class="inp" id="en" name="name" autocomplete="name"><span class="err-msg" aria-live="polite"></span></div><div class="field"><label for="ep">Phone</label><input class="inp" id="ep" name="phone" inputmode="tel" autocomplete="tel"><span class="err-msg" aria-live="polite"></span></div></div>
+          <div class="field"><label for="em">Anything else? (optional)</label><textarea class="inp" id="em" name="msg" placeholder="Preferred unit, floor, or a good time to call"></textarea></div>
+          <button class="btn btn-acc btn-block" type="submit" data-i="send">Send on WhatsApp</button>
+          <p class="muted small">This opens WhatsApp with your details filled in, ready to send.</p>
+          <p class="form-ok" hidden>WhatsApp is open with your enquiry. Press send and we'll call you back.</p>
+        </form>
+      </div>
+      <nav class="pn" aria-label="More projects"><a class="glass" href="project.html?p=${prev.s}" data-spot><small>Previous project</small><b>${esc(prev.n)}</b></a><a class="glass" href="project.html?p=${next.s}" data-spot><small>Next project</small><b>${esc(next.n)}</b></a></nav>
+    </div></section>`;
+  $('#body').innerHTML = `<div class="wrap"><nav class="jn glass" id="jn" aria-label="On this page">${S.map(s => `<a href="#${s[0]}">${s[1]}</a>`).join('')}</nav></div>` + H;
+  function ordinal(n) { return n + (['th', 'st', 'nd', 'rd'][n % 10 > 3 || Math.floor(n / 10) === 1 ? 0 : n % 10] || 'th'); }
+
+  /* jump nav highlight */
+  const jl = $$('#jn a'); const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) jl.forEach(a => { const on = a.getAttribute('href') === '#' + e.target.id; a.classList.toggle('on', on); if (on) { const j = a.parentNode; j.scrollTo({ left: a.offsetLeft - j.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' }); } }); }), { rootMargin: '-40% 0px -55% 0px' });
+  S.forEach(s => so.observe($('#' + s[0])));
+
+  /* gallery */
+  const ALLP = p.pics.concat(p.extra || []);
+  const G = ALLP.map((x, j) => ({ src: x.src, fb: x.fb, cap: `${x.cap || p.n} · ${j + 1} of ${ALLP.length}` }));
+  let cur = 0;
+  const setMain = j => { cur = j; const m = $('#main'); m.classList.toggle('tall', tall(p.pics[j])); $('.ph', m).outerHTML = img(p.pics[j], p.pics[j].cap || p.n); $('#mcap').textContent = p.pics[j].cap || p.n; SM.wireImgs(m); $$('#thumbs button').forEach((b, k) => b.setAttribute('aria-current', k === j)); };
+  $('#main').addEventListener('click', e => { if (!e.target.closest('#zoom')) SM.lightbox(G, cur); });
+  $('#main').addEventListener('keydown', e => { if (e.key === 'Enter') SM.lightbox(G, cur); });
+  $('#zoom').addEventListener('click', () => SM.lightbox(G, cur));
+  if ($('#thumbs')) $('#thumbs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setMain(+b.dataset.j); });
+  if ($('#gal')) { $('#gal').addEventListener('click', e => { const b = e.target.closest('button'); if (b) SM.lightbox(G, +b.dataset.j); }); $('#galAll').addEventListener('click', () => SM.lightbox(G, 0)); }
+  $('#share').addEventListener('click', async () => { try { if (navigator.share) await navigator.share({ title: p.n + ' · S. M. Builders', url: location.href }); else SM.copy(location.href, 'Link copied'); } catch (e) { } });
+
+  /* plans */
+  const pv = SM.planViewer($('#pview')); let pj = 0;
+  const setPlan = j => { pj = j; const x = p.plans[j]; pv.set(x.img.src, x.img.fb, `${p.n}, ${x.n}: ${x.t}`); $('#pvHint').textContent = `${x.n} · ${x.t}`; $$('#ptabs button').forEach((b, k) => b.setAttribute('aria-selected', k === j)); };
+  $('#ptabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setPlan(+b.dataset.j); });
+  $('#ptabs').addEventListener('keydown', e => { const d = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); const n = (pj + d + p.plans.length) % p.plans.length; setPlan(n); $$('#ptabs button')[n].focus(); } });
+  $('#zin').onclick = () => pv.zoom(1.5); $('#zout').onclick = () => pv.zoom(1 / 1.5);
+  $('#zfull').onclick = () => SM.lightbox(p.plans.map(x => ({ src: x.img.src, fb: x.img.fb, cap: `${p.n} · ${x.n} · ${x.t}` })), pj);
+  setPlan(0);
+
+  /* payment */
+  if (p.pay.type === 'rates') {
+    let rj = 0; const R = p.pay.rates;
+    const calc = () => { const a = +$('#sqft').value, rate = R[rj][1] * ($('#corner').checked ? 1 + p.pay.corner / 100 : 1), tot = a * rate;
+      $('#sqv').textContent = a.toLocaleString(); $('#kTot').textContent = SM.short(tot); $('#kTotW').textContent = SM.rs(tot);
+      $('#kDown').textContent = SM.short(tot * p.pay.down / 100); $('#kMon').textContent = SM.short(tot * p.pay.inst / 100 / p.pay.months); $('#kPos').textContent = SM.short(tot * p.pay.poss / 100); $('#kRate').textContent = SM.rs(rate);
+      $('#payWa').href = wa(`Hi S. M. Builders, I'm interested in S. M. House: about ${a.toLocaleString()} sq ft on the ${R[rj][2] ? '7th floor with rooftop' : ordinal(R[rj][0]) + ' floor'}${$('#corner').checked ? ', corner outlet' : ''}. The calculator shows about ${SM.rs(tot)}. Please confirm availability and the schedule.`); };
+    $('#rates').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; rj = +b.dataset.j; $$('#rates button').forEach(x => x.setAttribute('aria-pressed', x === b)); calc(); });
+    $('#sqft').addEventListener('input', calc); $('#corner').addEventListener('change', calc); calc();
+  } else if (p.pay.type === 'plan') {
+    const calc = () => { const pr = +($('#price').value.replace(/[^\d]/g, '')) || 0, dp = +$('#dp').value; $('#dpv').textContent = dp; $('#sb1').style.flexBasis = dp + '%'; $('#sb2').style.flexBasis = (100 - dp) + '%';
+      if (!pr) { $('#kMon').textContent = 'Enter a price'; $('#kDown').textContent = $('#kRest').textContent = '—'; return; }
+      $('#kMon').textContent = SM.short(pr * (100 - dp) / 100 / p.pay.months); $('#kDown').textContent = SM.short(pr * dp / 100); $('#kRest').textContent = SM.short(pr * (100 - dp) / 100); };
+    $('#price').addEventListener('input', e => { const d = e.target.value.replace(/[^\d]/g, ''); e.target.value = d ? (+d).toLocaleString('en-PK') : ''; calc(); }); $('#dp').addEventListener('input', calc); calc();
+  }
+  SM.leadForm($('#pform'), f => ['Project: ' + p.n, $('#em').value.trim() ? 'Note: ' + $('#em').value.trim() : '', 'I would like the price list and a site visit.']);
+});

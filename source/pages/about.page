@@ -1,0 +1,161 @@
+@page: about
+@title: About · S. M. Builders & Developers, since 1967
+@desc: S. M. Group began its journey in 1967. Its philosophy rests on experiential design, novelty and commitment, guided by Islamic values. Honesty, integrity, flexibility.
+===CSS===
+.phero .stage { --word-top: 18%; }
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.story .big { font-size: clamp(19px, 1.6vw, 23px); line-height: 1.6; color: var(--ink-2); }
+.story .big + .big { margin-top: var(--space-lg); }
+.story .ph { border-radius: var(--r-xl); aspect-ratio: 4 / 4.4; }
+.story-img { padding: 8px; border-radius: var(--r-xl); position: sticky; top: 120px; }
+.story-img .ph { border-radius: calc(var(--r-xl) - 8px); }
+@media (max-width: 900px) { .story { grid-template-columns: minmax(0, 1fr); } .story-img { position: static; } }
+.vis { padding: clamp(32px, 6vw, 90px); text-align: center; }
+.vis .h2 { max-width: 20ch; margin: 0 auto; position: relative; z-index: 1; font-size: clamp(30px, 4.2vw, 64px); }
+.vis p { position: relative; z-index: 1; margin: 22px auto 0; max-width: 60ch; }
+.vals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.val { position: relative; padding: clamp(24px, 3vw, 40px); border-radius: var(--r-xl); min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.val .n { font: 800 clamp(70px, 9vw, 130px)/.8 var(--font-display); font-stretch: 120%; letter-spacing: -.05em; color: var(--acc-soft); -webkit-text-stroke: 1px var(--acc); }
+.val b { display: block; font: 700 clamp(26px, 2.6vw, 38px)/1.05 var(--font-display); font-stretch: 112%; letter-spacing: -.02em; }
+.val p { margin-top: 10px; color: var(--ink-2); }
+@media (max-width: 860px) { .vals { grid-template-columns: minmax(0, 1fr); } .val { min-height: 0; gap: 28px; } }
+.what { --cols: 5; --mcol: 62%; }
+.what div { padding: 20px; border-radius: var(--r-lg); min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+.what em { font: 500 12px/1 var(--font-mono); font-style: normal; color: var(--acc-text); }
+.what b { font: 700 18px/1.15 var(--font-display); font-stretch: 108%; }
+@media (max-width: 1000px) { .what { --cols: 3; } }
+/* timeline */
+.time { position: relative; }
+.time-row { display: grid; grid-template-columns: minmax(90px, 160px) 30px minmax(0, 1fr); gap: 0 clamp(14px, 2vw, 28px); }
+.time-row .y { padding: 22px 0; font: 800 clamp(24px, 2.6vw, 38px)/1 var(--font-display); font-stretch: 112%; letter-spacing: -.03em; text-align: right; color: var(--ink-3); transition: color var(--dur-3); }
+.time-row .ax { position: relative; }
+.time-row .ax::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; margin-left: -.5px; background: var(--stroke-2); }
+.time-row .ax::after { content: ""; position: absolute; left: 50%; top: 30px; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: var(--bg); border: 2px solid var(--stroke-3); transition: background-color var(--dur-3), border-color var(--dur-3), box-shadow var(--dur-3); }
+.time-row .tx { padding: 22px 0 30px; border-bottom: 1px solid var(--stroke); }
+.time-row .tx b { display: block; font: 700 20px/1.25 var(--font-display); font-stretch: 106%; }
+.time-row .tx p { margin-top: 6px; color: var(--ink-2); max-width: 62ch; }
+.time-row.in .y { color: var(--acc-text); }
+.time-row.in .ax::after { background: var(--acc); border-color: var(--acc); box-shadow: 0 0 0 6px var(--acc-soft); }
+.time-row.up .y { color: var(--ink-3); }
+.time-row.up .ax::after { background: var(--bg); border-style: dashed; border-color: var(--acc); box-shadow: none; }
+/* ventures */
+.ven { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.ven .ltile .lim { width: 88px; height: 88px; background: #fff; }
+.ven .ltile .lim.dk { background: #0f2a1a; }
+@media (max-width: 1000px) { .ven { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .ven { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.aff { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 760px) { .aff { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.team { padding: clamp(18px, 2.4vw, 28px); border-radius: var(--r-xl); }
+.team .ti { margin-top: 18px; border-radius: 16px; background: #fff; padding: clamp(10px, 2vw, 22px); }
+.team .ti img { width: 100%; height: auto; }
+.dls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.dl { display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: var(--r-lg); transition: transform var(--dur-3) var(--ease-out); }
+.dl:hover { transform: translateY(-3px); }
+.dl .di { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--acc-soft); color: var(--acc-text); flex: none; }
+.dl .di svg { width: 24px; height: 24px; }
+.dl b { display: block; font: 700 16px/1.2 var(--font-display); font-stretch: 106%; }
+.dl small { display: block; color: var(--ink-3); font-size: 13px; margin-top: 3px; }
+@media (max-width: 860px) { .dls { grid-template-columns: minmax(0, 1fr); } }
+===HTML===
+<section class="phero" data-shape="logo" data-shape-x=".5" data-shape-y=".05" data-shape-s=".85" data-shape-a=".45" data-shape-ma=".2">
+  <div class="stage" id="astage">
+    <div class="sky"></div><div class="stars"></div>
+    <div class="word" aria-hidden="true"><span>SINCE 1967</span></div>
+    <div class="glow"></div>
+    <div class="ground"></div>
+  </div>
+  <div class="phero-ui wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><i></i><span>About</span></nav>
+    <h1 class="h1 split">Renowned for <span class="accent">its integrity.</span></h1>
+    <p class="lead rv d2">S. M. Group began its journey in 1967. Nearly six decades on, S. M. Builders &amp; Developers carries the same promise into every building it raises in Karachi.</p>
+  </div>
+</section>
+
+<section class="sec" data-shape="plan" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap story">
+    <div>
+      <span class="kicker">Our story</span>
+      <h2 class="h2 split" style="font-size:clamp(32px,3.8vw,58px)">Experiential design, novelty <span class="accent">and commitment.</span></h2>
+      <p class="big rv d1" style="margin-top:28px">The philosophy of S. M. Group of Companies is based on experiential design, novelty and commitment, in accordance with the basic principles of Islamic values. We started our journey in 1967 with a vision to delight our customers by exceeding their expectations, holding to the highest standards of quality, health, safety and environment while identifying what modern living needs in feasibility, security and innovation.</p>
+      <p class="big rv d2">Our team is made up of businessmen and entrepreneurs who have succeeded across diverse business activities, by the grace of Almighty, while keeping to the highest standards of quality, transparency and excellence. That is how we earned our customers' trust and a reputation for being reliable.</p>
+      <p class="big rv d3">We have vast experience in property and real estate, primarily in the construction of residential complexes, banquet halls and educational institutions.</p>
+    </div>
+    <div class="story-img glass rv d1"></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="globe" data-shape-s=".9" data-shape-a=".3" data-shape-ma=".12" data-shape-spin=".06">
+  <div class="wrap">
+    <div class="vis gframe rv">
+      <span class="kicker" style="color:oklch(84% .1 84);position:relative;z-index:1">Our vision</span>
+      <h2 class="h2">Help 1 million Karachiites own property <span class="accent">at prime locations.</span></h2>
+      <p class="lead">Residential and commercial property with state-of-the-art features at competitive prices, through surveying, consulting, property development, marketing, selling and maintenance.</p>
+    </div>
+    <div class="what mrail" style="margin-top:14px" id="what"></div>
+  </div>
+</section>
+
+<section class="sec" data-shape="key" data-shape-x=".6" data-shape-y=".1" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Our core values</span><h2 class="h2 split">Driven by <span class="accent">three words.</span></h2></div><p class="lead rv d1">The values S. M. Builders &amp; Developers names as its own, and the reason the group's tagline is "renowned for its integrity".</p></div>
+    <div class="vals">
+      <div class="val glass rv" data-spot><span class="n">01</span><div><b>Honesty</b><p>Clear facts, published figures and plain answers, from the first call to possession.</p></div></div>
+      <div class="val glass rv d1" data-spot><span class="n">02</span><div><b>Integrity</b><p>Approved projects, named materials and a builder who maintains what it builds.</p></div></div>
+      <div class="val glass rv d2" data-spot><span class="n">03</span><div><b>Flexibility</b><p>Payment plans and customised deals shaped around how people actually buy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-shape="tower" data-shape-x="-.6" data-shape-y=".1" data-shape-s=".6" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Milestones</span><h2 class="h2 split">From 1967 <span class="accent">to today.</span></h2></div><p class="lead rv d1">Key moments drawn from the project pages and news published by S. M. Builders.</p></div>
+    <div class="time" id="time"></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="cloud" data-shape-s="1.1" data-shape-a=".25" data-shape-ma=".1">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">S. M. Group</span><h2 class="h2 split">Our <span class="accent">ventures.</span></h2></div><p class="lead rv d1">Beyond construction, the group runs businesses in education, events, food, logistics and auto parts.</p></div>
+    <div class="ven" id="ven"></div>
+    <div class="team glass rv" style="margin-top:clamp(28px,4vw,48px)" data-spot><h3 class="h3">The team behind Burj Al Jinnah</h3><p class="muted small" style="margin-top:6px">Architects, MEP and structural consultants, visualisers and interior designers who worked on the project.</p><div class="ti"></div></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="globe" data-shape-s=".8" data-shape-a=".25" data-shape-ma=".1">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Affiliated &amp; enlisted</span><h2 class="h2 split">Registered and <span class="accent">recognised.</span></h2></div><p class="lead rv d1">S. M. Builders &amp; Developers is affiliated with ABAD and the Karachi Chamber of Commerce &amp; Industry, and enlisted with the Pakistan Council of Architects &amp; Town Planners.</p></div>
+    <div class="aff" id="aff"></div>
+  </div>
+</section>
+
+<section class="sec tight" data-shape="logo" data-shape-x=".55" data-shape-y=".1" data-shape-s=".55" data-shape-a=".3" data-shape-ma=".12">
+  <div class="wrap">
+    <div class="rel-h" style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px"><h2 class="h2 split" style="font-size:clamp(30px,3.6vw,52px)">Take it <span class="accent">with you.</span></h2></div>
+    <div class="dls" id="dls"></div>
+  </div>
+</section>
+===JS===
+SM.boot(function(){
+  const {$, $$, esc, D, img, I} = SM;
+  SM.stage($('#astage'), { dur: 1800, delay: 300, fit: .92, max: 340 });
+  $('.story-img').innerHTML = img(D.pic('2024/01/About_us_page.jpg'), 'S. M. Builders & Developers, affiliated and enlisted with ABAD, KCCI, PEC and others').replace('class="ph ', 'class="ph ');
+  $('.story-img .ph').style.cssText = 'aspect-ratio:570/640;background:#fff';
+  $('.ti').innerHTML = SM.rawImg(D.pic('2021/09/Our-Team-1024x217.png'), 'Project team: Arch Vision Plus, ECC MEP consultancy, structural engineers, visualisers and Design & Depth interiors');
+  $('#what').innerHTML = ['Surveying', 'Consulting', 'Property development', 'Marketing & selling', 'Maintenance'].map((w, i) => `<div class="glass rv d${i % 4}" data-spot><em>0${i + 1}</em><b>${w}</b></div>`).join('');
+  const T = [
+    ['1967', 'S. M. Group begins its journey', 'A family enterprise in Karachi, founded on experiential design, novelty and commitment.'],
+    ['Decades', 'Homes, halls and schools', 'Residential complexes, banquet halls such as Bella Vista, and educational institutions including SM Public Academy, now 50 years in education.'],
+    ['2023', 'Burj Al Jinnah rises', 'Two floors a month on Main Jinnah Avenue; deals signed with Agha Steel, D.G. Khan Cement, Envicrete, Pakistan Cables and Grohe.'],
+    ['2024', 'Completion certificate & S. M. House', 'The elevation of Burj Al Jinnah is finalized and its completion certificate acquired. S. M. House launches at Main 5 Star, North Nazimabad.'],
+    ['2025', 'S. M. Axis launches', 'A Ground + 22 tower of 83 three-bed apartments on Sher Shah Suri Road opens for booking.'],
+    ['2026', 'Recognition & milestones', 'Honoured as an early leader in EV-enabled communities; S. M. House completes its 7th floor slab in 15 months; Burj Al Jinnah enters its final phase.'],
+    ['2027', 'S. M. House possession', 'Published target for possession of S. M. House, May 2027.', 'up']
+  ];
+  $('#time').innerHTML = T.map(t => `<div class="time-row rv ${t[3] || ''}"><span class="y">${t[0]}</span><span class="ax"></span><div class="tx"><b>${esc(t[1])}</b><p>${esc(t[2])}</p></div></div>`).join('');
+  $('#ven').innerHTML = D.VEN.map(v => `<div class="ltile rv"><span class="lim${/logos-0[14]/.test(v.src) ? ' dk' : ''}">${SM.rawImg(v, v.n)}</span><span><b>${esc(v.n)}</b><small>${esc(v.t)}</small></span></div>`).join('');
+  $('#aff').innerHTML = D.AFF.map(a => `<div class="ltile rv"><span class="lim">${SM.rawImg(a, a.full)}</span><span><b>${esc(a.n)}</b><small>${esc(a.full)}</small></span></div>`).join('');
+  $('#dls').innerHTML = [['Company brochure', 'S. M. Builders & Developers, PDF', D.C.files.brochure], ['Burj Al Jinnah tri-fold', 'Project leaflet, PDF', D.C.files.trifold], ['S. M. Group profile', 'Company profile 2026, PDF', D.C.files.profile]]
+    .map(d => `<a class="dl glass rv" href="${d[2]}" target="_blank" rel="noopener" data-spot><span class="di">${I.down}</span><span><b>${esc(d[0])}</b><small>${esc(d[1])}</small></span></a>`).join('');
+  SM.observe();
+});
